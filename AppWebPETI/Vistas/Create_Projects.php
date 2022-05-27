@@ -26,13 +26,13 @@ if (!isset($_SESSION['usuario'])) {
 
 <body>
 
-    <?php $url = "http://" . $_SERVER['HTTP_HOST'] . "/sitioweb" ?>
+    <?php $url = "http://" . $_SERVER['HTTP_HOST'] . "/AppWebPETI" ?>
 
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="nav navbar-nav">
             <a class="nav-item nav-link active" href="#">Administrador del sistema <span class="sr-only">(current)</span></a>
 
-            <a class="nav-item nav-link" href="<?php echo $url; ?>/administrador/inicio.php">inicio</a>
+            <a class="nav-item nav-link" href="Index.php">inicio</a>
 
             <a class="nav-item nav-link" href="Create_Projects.php">Servicio</a>
 
@@ -40,7 +40,7 @@ if (!isset($_SESSION['usuario'])) {
 
             <a class="nav-item nav-link" href="<?php echo $url; ?>">Ver sitio web</a>
         </div>
-    </nav>
+    </nav> 
 
     <div class="container">
         <br />
@@ -49,6 +49,12 @@ if (!isset($_SESSION['usuario'])) {
             //WebPETI
             $txtID = (isset($_POST['txtID'])) ? $_POST['txtID'] : "";
             $txtNombre = (isset($_POST['txtNombre'])) ? $_POST['txtNombre'] : "";
+            $txtObjetivo = (isset($_POST['txtObjetivo'])) ? $_POST['txtObjetivo'] : "";
+            $txtProceso = (isset($_POST['txtProceso'])) ? $_POST['txtProceso'] : "";
+            $txtCreation_date = (isset($_POST['txtCreation_date'])) ? $_POST['txtCreation_date'] : "";
+            $txtDeadline = (isset($_POST['txtDeadline'])) ? $_POST['txtDeadline'] : "";
+            $txtStatus = (isset($_POST['txtStatus'])) ? $_POST['txtStatus'] : "";
+            $txtuploadedFile = (isset($_POST['txtuploadedFile'])) ? $_POST['txtuploadedFile'] : "";
             $txtimagen = (isset($_FILES['txtimagen']['name'])) ? $_FILES['txtimagen']['name'] : "";
             $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
 
@@ -64,7 +70,9 @@ if (!isset($_SESSION['usuario'])) {
 
                 case "Agregar":
 
-                    $sentenciaSQL = $conexion->prepare("INSERT INTO webpeti (Nombre_Projects,Imagen  ) VALUES (:Nombre_Projects,:Imagen);");
+                    $sentenciaSQL = $conexion->prepare("INSERT INTO webpeti (Nombre_Projects,Objetivo,Proceso,
+                    Fecha_Creacion,Fecha_Limite,Resultado,Archivo,Imagen) VALUES (:Nombre_Projects,:Objetivo,:Proceso,:Fecha_Creacion,
+                    :Fecha_Limite,Resultado,:Archivo,:Imagen);");
 
                     $sentenciaSQL->bindParam(':Nombre_Projects', $txtNombre);
                     $fecha = new DateTime();
@@ -200,19 +208,19 @@ if (!isset($_SESSION['usuario'])) {
                             </div>
 
                             <div class="Fecha De Creacion">
-                                <label>Fecha_Creacion</label>
-                                <input class="controls" type="datetime-local" name="Creation_date" id="txt_fecha de creacion_Reg" placeholder="Seleccione la fecha de creacion">
+                                <label for="txtFecha_Creacion">Fecha_Creacion</label>
+                                <input class="controls" type="datetime-local" name="txtCreation_date" id="txt_fechacreacion_Reg" placeholder="Seleccione la fecha de creacion">
                             </div>
                             <br />
                             <div class="Fecha Limite">
                                 <label>Fecha_Limite</label>
-                                <input class="controls" type="datetime-local" name="Deadline" id="txt_fecha limite_Reg" placeholder="Seleccione la fecha limite de creacion">
+                                <input class="controls" type="datetime-local" name="txtDeadline" id="txt_fechalimite_Reg" placeholder="Seleccione la fecha limite de creacion">
                             </div>
 
                             <form action="select_multiple.php" method="POST">
 
                                 Estado: <br>
-                                <select class='mi-selector' name='Status'>
+                                <select class='mi-selector' name='txtStatus'>
                                     <option value=''>Selecciona el resultado</option>
                                     <option value='Abierto'>Iniciado</option>
                                     <option value='Pendiente'>Pendiente</option>
@@ -230,7 +238,7 @@ if (!isset($_SESSION['usuario'])) {
                             <form method="POST" action="upload.php" enctype="multipart/form-data">
                                 <div>
                                     <span>Seleccione un archivo:</span>
-                                    <input type="file" name="uploadedFile" />
+                                    <input type="file" name="txtuploadedFile" />
                                 </div>
                             </form>
 
@@ -248,8 +256,8 @@ if (!isset($_SESSION['usuario'])) {
 
                             <div class="btn-group" role="group" aria-label="">
                                 <button type="submit" name="accion" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> value="Agregar" class="btn btn-success">Agregar</button>
-                                <button type="submit" name="accion" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?> value="Modificar" class="btn btn-warning">Modificar</button>
-                                <button type="submit" name="accion" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?> value="Cancelar" class="btn btn-info">Cancelar</button>
+                                <button type="submit" name="accion" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> value="Modificar" class="btn btn-warning">Modificar</button>
+                                <button type="submit" name="accion" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> value="Cancelar" class="btn btn-info">Cancelar</button>
                             </div>
 
                         </form>
@@ -260,7 +268,7 @@ if (!isset($_SESSION['usuario'])) {
 
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
 
                 <table class="table table-bordered">
                     <thead>
@@ -289,7 +297,7 @@ if (!isset($_SESSION['usuario'])) {
                                 <td><?php echo $webpeti['Resultado']; ?></td>
                                 <td><?php echo $webpeti['Archivo']; ?></td>
                                 <td><?php echo $webpeti['Imagen']; ?></td>
-
+                                
                                 <td>
 
                                     <img class="mx-auto d-block rounded" src="../../img/<?php echo $webpeti['Imagen']; ?>" width="50" alt="" srcset="">

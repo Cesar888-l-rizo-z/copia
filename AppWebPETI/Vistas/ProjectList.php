@@ -20,13 +20,13 @@
                 <a class="nav-link" href="#">Sistema De Informacíon</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php">Inicio</a>
+                <a class="nav-link" href="Index.php">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="Create_Projects.php">Servicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="nosotros.php">Nosotros</a>
+                <a class="nav-link" href="Nosotros.php">Nosotros</a>
             </li>
         </ul>
     </nav>
