@@ -107,7 +107,7 @@ switch($accion){
 
 }
 
-$sentenciaSQL= $conexion->prepare("SELECT * FROM servicios");
+$sentenciaSQL= $conexion->prepare("SELECT * FROM webpeti");
 $sentenciaSQL->execute();
 $listaServicios=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 

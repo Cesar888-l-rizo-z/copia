@@ -1,0 +1,12 @@
+.image-fondo {
+    background-image: url("img/80aérea2existente.jpg");
+    background-size: cover;
+}
+.cabecera{
+  color: #ffffff;
+  height: 850px;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  text-shadow: #ffffff 0px 0px 110px;
+}
