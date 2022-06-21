@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio Web</title>
+    <title>Web Peti</title>
 
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
 
@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <h4 class="card-title"><?php echo $servicio['Nombre_Projects']; ?></h4>
                             <h4 class="card-title"><?php echo $servicio['Fecha_Creacion']; ?></h4>
-                            <h4 class="card-title"><?php echo $servicio['Resultado']; ?></h4>
+                            <h4 class="card-title"><?php echo $servicio['Estado']; ?></h4>
                             <a name="" id="" class="btn btn-primary" href="https://www.si18.com.co/poli/c80/c80p3/c80p3.html" role="button">Ver Mas</a>
                         </div>
 

@@ -142,7 +142,7 @@ if (!isset($_SESSION['usuario'])) {
 
                         move_uploaded_file($tmpImagen, "../../img/" . $nombreArchivo);
 
-                        $sentenciaSQL = $conexion->prepare("SELECT Imagen FROM servicios WHERE id=:id");
+                        $sentenciaSQL = $conexion->prepare("SELECT Imagen FROM webpeti WHERE id=:id");
                         $sentenciaSQL->bindParam(':id', $txtID);
                         $sentenciaSQL->execute();
                         $servicio = $sentenciaSQL->fetch(PDO::FETCH_LAZY);

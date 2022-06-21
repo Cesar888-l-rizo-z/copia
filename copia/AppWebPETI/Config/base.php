@@ -1,6 +1,6 @@
 <?php
 	
-	$mysqli = new mysqli('localhost', 'root', 'password', 'personal');
+	$mysqli = new mysqli('localhost', 'root', 'rootpasswd', 'sitio');
 	
 	if($mysqli->connect_error){
 		
