@@ -1,22 +1,21 @@
 <?php
 
 session_start();
-if($_POST){
-    if (($_POST['usuario']=="adminuser")&&($_POST['clave']=="sistema123")){
-            
-        $_SESSION['usuario']="ok";
-        $_SESSION['nombreUsuario']="adminuser";
-        header('Location:Create_Projects.php');
+if ($_POST) {
+	if (($_POST['usuario'] == "adminuser") && ($_POST['clave'] == "sistema123")) {
 
-    }else{
-        $mensaje="Error: El usuario o contraseña son incorrectos";
-
-    }
+		$_SESSION['usuario'] = "ok";
+		$_SESSION['nombreUsuario'] = "adminuser";
+		header('Location:Create_Projects.php');
+	} else {
+		$mensaje = "Error: El usuario o contraseña son incorrectos";
+	}
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -38,15 +37,23 @@ if($_POST){
 	<link rel="stylesheet" href="./css/sweetalert2.min.css">
 
 	<!-- Sweet Alert V8.13.0 JS file -->
-	<script src="./js/sweetalert2.min.js" ></script>
+	<script src="./js/sweetalert2.min.js"></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
 	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
-	
+
 	<!-- General Styles -->
 	<link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
+
+	<?php if (isset($mensaje)) { ?>
+
+		<div class="alert alert-danger" role="alert">
+			<?php echo $mensaje; ?>
+		</div>
+	<?php } ?>
 
 	<div class="login-container">
 		<div class="login-content">
@@ -56,41 +63,46 @@ if($_POST){
 			<p class="text-center">
 				Inicia sesión con tu cuenta
 			</p>
-			<form action="" method="POST" autocomplete="off" >
+			<form action="" method="POST" autocomplete="off">
 				<div class="form-group">
 					<label for="UserName" class="bmd-label-floating"><i class="fas fa-user-secret"></i> &nbsp; Usuario</label>
-					<input type="text" class="form-control" id="UserName" name="usuario" pattern="[a-zA-Z0-9]{1,35}" maxlength="35" required="" >
+					<input type="text" class="form-control" id="UserName" name="usuario" pattern="[a-zA-Z0-9]{1,35}" maxlength="35" required="">
 				</div>
 				<div class="form-group">
 					<label for="UserPassword" class="bmd-label-floating"><i class="fas fa-key"></i> &nbsp; Contraseña</label>
-					<input type="password" class="form-control" id="UserPassword" name="clave" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="" >
+					<input type="password" class="form-control" id="UserPassword" name="clave" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="">
 				</div>
 				<button type="submit" class="btn-login text-center">LOG IN</button>
 			</form>
 		</div>
 	</div>
 
-	
+
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
 	<!-- jQuery V3.4.1 -->
-	<script src="./js/jquery-3.4.1.min.js" ></script>
+	<script src="./js/jquery-3.4.1.min.js"></script>
 
 	<!-- popper -->
-	<script src="./js/popper.min.js" ></script>
+	<script src="./js/popper.min.js"></script>
 
 	<!-- Bootstrap V4.3 -->
-	<script src="./js/bootstrap.min.js" ></script>
+	<script src="./js/bootstrap.min.js"></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
-	<script src="./js/jquery.mCustomScrollbar.concat.min.js" ></script>
+	<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
 
 	<!-- Bootstrap Material Design V4.0 -->
-	<script src="./js/bootstrap-material-design.min.js" ></script>
-	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+	<script src="./js/bootstrap-material-design.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('body').bootstrapMaterialDesign();
+		});
+	</script>
 
-	<script src="./js/main.js" ></script>
-    <script src="https://kit.fontawesome.com/7efd9e34c5.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="https://kit.fontawesome.com/7efd9e34c5.js"></script>
 </body>
+
 </html>

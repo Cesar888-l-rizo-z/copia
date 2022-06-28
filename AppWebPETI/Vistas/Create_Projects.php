@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
 
 </head>
 
@@ -29,20 +29,24 @@ if (!isset($_SESSION['usuario'])) {
 
     <?php $url = "http://" . $_SERVER['HTTP_HOST'] . "/AppWebPETI" ?>
 
-    <nav class="navbar navbar-expand navbar-light bg-light" <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#"> Administrador del sistema</a>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary ">
+        <div class="container">
+            
+            <a class="navbar-brand active" href="#"> Administrador del sistema</a>
 
-        <a class="nav-item nav-link" href="Index.php">inicio</a>
+            <a class="navbar-brand nav-link" href="Index.php">inicio</a>
 
-        <a class="nav-item nav-link" href="Create_Projects.php">Proyectos</a>
+            <a class="navbar-brand nav-link" href="Create_Projects.php">Proyectos</a>
 
-        <a class="nav-item nav-link" href="Cerrar.php">Cerrar</a>
-
-        </div>
+            <a class="navbar-brand nav-link" href="Cerrar.php">Cerrar</a>
+        <div class="container-fluid">
     </nav>
 
     <div class="container">
-        <br />
+    <br />
+    <br />
+    <br />
+        
         <div class="row">
             <?php
 
@@ -54,8 +58,10 @@ if (!isset($_SESSION['usuario'])) {
             $txtDeadline = (isset($_POST['txtDeadline'])) ? $_POST['txtDeadline'] : "";
             $txtStatus = (isset($_POST['txtStatus'])) ? $_POST['txtStatus'] : "";
             $txtuploadedFile = (isset($_FILES['txtuploadedFile']['name'])) ? $_FILES['txtuploadedFile']['name'] : "";
-            $txtImagen = (isset($_FILES['Imagen']['name'])) ? $_FILES['Imagen']['name'] : "";
+            $txtImagen = (isset($_FILES['txtImagen']['name'])) ? $_FILES['txtImagen']['name'] : "";
             $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
+
+           // print_r($_POST);
 
             include("../Config/bd.php");
 
@@ -93,20 +99,32 @@ if (!isset($_SESSION['usuario'])) {
                     $sentenciaSQL->bindParam(':Fecha_Limite', $txtDeadline);
                     $sentenciaSQL->bindParam(':Estado', $txtStatus);
                     $sentenciaSQL->bindParam(':Archivo', $txtuploadedFile);
-                    $sentenciaSQL->bindParam(':Imagen', $txtImagen);
 
-                    $fecha= new DateTime();
+                    //$fecha = new DateTime();
+                    function nameFile()
+                    {
+                        date_default_timezone_set('America/Bogota');
+                        $time = time();
+                        $nameprog = "evidence_" . date("dmY-His", $time);
+                        return $nameprog;
+                    }
+                    $fecha = nameFile();
 
-                    $nombreArchivo = ($txtImagen != "") ? $fecha->getTimestamp() . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
+
+                    //$nombreArchivo = ($txtImagen != "") ? $fecha->getTimestamp() . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
+                    $nombreArchivo = ($txtImagen != "") ? $fecha . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
+
                     $tmpImagen = $_FILES["txtImagen"]["tmp_name"];
 
                     if ($tmpImagen != "") {
 
-                        move_uploaded_file($tmpImagen, "css/img/" . $nombreArchivo);
+                        move_uploaded_file($tmpImagen, "./css/img/"  . $nombreArchivo);
                     }
+
 
                     $sentenciaSQL->bindParam(':Imagen', $nombreArchivo);
                     $sentenciaSQL->execute();
+                    header("Location:Create_Projects.php");
                     break;
 
                 case "Modificar":
@@ -122,7 +140,7 @@ if (!isset($_SESSION['usuario'])) {
                     Estado = :Estado,
                     Archivo = :Archivo
                     WHERE id=:id");
-                    
+
                     $sentenciaSQL->bindParam(':Nombre_Projects', $txtNombre);
                     $sentenciaSQL->bindParam(':Objetivo', $txtObjetivo);
                     $sentenciaSQL->bindParam(':Proceso', $txtProceso);
@@ -130,7 +148,7 @@ if (!isset($_SESSION['usuario'])) {
                     $sentenciaSQL->bindParam(':Fecha_Limite', $txtDeadline);
                     $sentenciaSQL->bindParam(':Estado', $txtStatus);
                     $sentenciaSQL->bindParam(':Archivo', $txtuploadedFile);
-                    
+
                     $sentenciaSQL->bindParam(':id', $txtID);
                     $sentenciaSQL->execute();
 
@@ -140,7 +158,7 @@ if (!isset($_SESSION['usuario'])) {
                         $nombreArchivo = ($txtImagen != "") ? $fecha->getTimestamp() . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
                         $tmpImagen = $_FILES["txtImagen"]["tmp_name"];
 
-                        move_uploaded_file($tmpImagen, "img" . $nombreArchivo);
+                        move_uploaded_file($tmpImagen, "./css/img/ " . $nombreArchivo);
 
                         $sentenciaSQL = $conexion->prepare("SELECT Imagen FROM webpeti WHERE id=:id");
                         $sentenciaSQL->bindParam(':id', $txtID);
@@ -149,22 +167,23 @@ if (!isset($_SESSION['usuario'])) {
 
                         if (isset($proyecto["imagen"]) && ($proyecto["imagen"] != "imagen.jpg")) {
 
-                            if (file_exists("../../img/" . $proyecto["imagen"])) {
+                            if (file_exists("./css/img/" . $proyecto["imagen"])) {
 
-                                unlink("../../img/" . $proyecto["imagen"]);
+                                unlink("./css/img/" . $proyecto["imagen"]);
                             }
                         }
 
                         $sentenciaSQL = $conexion->prepare("UPDATE webpeti SET Imagen=:Imagen WHERE id=:id");
-                        $sentenciaSQL->bindParam(':imagen', $nombreArchivo);
+                        $sentenciaSQL->bindParam(':Imagen', $nombreArchivo);
                         $sentenciaSQL->bindParam(':id', $txtID);
                         $sentenciaSQL->execute();
                     }
 
+                    header("Location:Create_Projects.php");
                     break;
 
                 case "Cancelar":
-                    echo "Presionado Botón Cancelar";
+                    header("Location:Create_Projects.php");
                     break;
 
                 case "Seleccionar":
@@ -174,14 +193,14 @@ if (!isset($_SESSION['usuario'])) {
                     $sentenciaSQL->execute();
                     $proyecto = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
 
-                    $txtNombre=$proyecto['Nombre_Projects'];
-                    $txtObjetivo=$proyecto['Objetivo'];
-                    $txtProceso=$proyecto['Proceso'];
-                    $txtCreation_date=$proyecto['Fecha_Creacion'];
-                    $txtDeadline=$proyecto['Fecha_Limite'];
-                    $txtStatus=$proyecto['Estado'];
-                    $txtuploadedFile=$proyecto['Archivo'];
-                    $txtImagen=$proyecto['Imagen'];
+                    $txtNombre = $proyecto['Nombre_Projects'];
+                    $txtObjetivo = $proyecto['Objetivo'];
+                    $txtProceso = $proyecto['Proceso'];
+                    $txtCreation_date = $proyecto['Fecha_Creacion'];
+                    $txtDeadline = $proyecto['Fecha_Limite'];
+                    $txtStatus = $proyecto['Estado'];
+                    $txtuploadedFile = $proyecto['Archivo'];
+                    $txtImagen = $proyecto['Imagen'];
 
 
                     // echo "Presionado Botón Seleccionar";
@@ -194,20 +213,18 @@ if (!isset($_SESSION['usuario'])) {
                     $sentenciaSQL->execute();
                     $proyecto = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
 
-                    if (isset($proyecto["Imagen"]) && ($proyecto["Imagen"] != "imagen.jpg")) {
+                    if (isset($proyecto["imagen"]) && ($proyecto["imagen"] != "imagen.jpg")) {
 
-                        if (file_exists("img/" . $proyecto["Imagen"])) {
+                        if (file_exists("css/img/" . $proyecto["imagen"])) {
 
-                            unlink("img/" . $proyecto["Imagen"]);
+                            unlink("css/img/" . $proyecto["imagen"]);
                         }
                     }
-
-                    /* https://www.youtube.com/watch?v=IZHBMwGIAoI   (2:28:58) por hay va el video y voy yo   */
                     $sentenciaSQL = $conexion->prepare("DELETE FROM webpeti WHERE id=:id");
                     $sentenciaSQL->bindParam(':id', $txtID);
                     $sentenciaSQL->execute();
 
-                    // echo "Presionado Botón Borrar";
+                    header("Location:Create_Projects.php");
                     break;
             }
 
@@ -241,7 +258,7 @@ if (!isset($_SESSION['usuario'])) {
 
                             <div class="form-group">
                                 <label for="txtObjetivo">Objetivo:</label>
-                                <textarea required class="form-control" value="<?php echo $txtObjetivo; ?>"  name="txtObjetivo" id="txtObjetivo" placeholder="Objetivo del proyecto" rows="3"></textarea>
+                                <textarea required class="form-control" value="<?php echo $txtObjetivo; ?>" name="txtObjetivo" id="txtObjetivo" placeholder="Objetivo del proyecto" rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -271,10 +288,15 @@ if (!isset($_SESSION['usuario'])) {
                                 <option value='Rechazado'>Rechazado</option>
                                 <option value='Cerrado'>Cerrado</option>
                             </select>
-                            
-                            <div>
-                                <span>Seleccione un archivo:</span>
-                                <input type="file" name="txtuploadedFile" />
+
+                            <div class="form-group"> <label for="archivo" class="col-ms-2 control-label">Archivo</label>
+
+                                <?php if ($txtuploadedFile != "") { ?>
+                                    <file class="" src="../Docs/S<?php echo $txtuploadedFile; ?>">
+                                    <?php } ?>
+
+
+                                    <div class="col-sm-15"> <input type="file" class="form-control" id="archivo" name="txtuploadedFile" /> </div>
                             </div>
 
                             <div class="form-group">
@@ -282,11 +304,11 @@ if (!isset($_SESSION['usuario'])) {
 
                                 <?php if ($txtImagen != "") { ?>
 
-                                    <img class="img-thumbnail rounded" src="css/img/S<?php echo $txtImagen; ?>" width="50" alt="" srcset="">
+                                    <img class="img-thumbnail rounded" src="css/img/<?php echo $txtImagen; ?>" width="50" alt="" srcset="">
 
                                 <?php } ?>
 
-                                <input type="file" class="form-control" name="txtImagen" id="txtImagen" placeholder="nombre de la imagen">
+                                <input type="file" class="form-control" name="txtImagen" id="txtImagen" accept="image/*">
                             </div>
 
                             <div class="btn-group" role="group" aria-label="">
@@ -325,16 +347,15 @@ if (!isset($_SESSION['usuario'])) {
                             <tr>
                                 <td><?php echo $webpeti['id']; ?></td>
                                 <td><?php echo $webpeti['Nombre_Projects']; ?></td>
-                                <td> <textarea  rows="5" cols="20"><?php echo $webpeti['Objetivo']; ?></textarea></td>
+                                <td> <textarea rows="2" cols="17"><?php echo $webpeti['Objetivo']; ?></textarea></td>
                                 <td><?php echo $webpeti['Proceso']; ?></td>
                                 <td><?php echo $webpeti['Fecha_Creacion']; ?></td>
                                 <td><?php echo $webpeti['Fecha_Limite']; ?></td>
                                 <td><?php echo $webpeti['Estado']; ?></td>
                                 <td><?php echo $webpeti['Archivo']; ?></td>
-                                <td><?php echo $webpeti['Imagen']; ?></td>
-
-                                <img class="mx-auto d-block rounded" src="css/img/<?php echo $webpeti['Imagen']; ?>" width="50" alt="" srcset="">
-
+                                <td>
+                                    <img class="mx-auto d-block rounded" src="css/img/<?php echo $webpeti['Imagen']; ?>" width="50" alt="" srcset="">
+                                </td>
                                 <td>
                                     <form method="post">
 
