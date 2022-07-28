@@ -27,6 +27,14 @@ class Index extends Controller
         $this->view->render('peti/list');
     }
 
+    function list_proyect()
+    {
+        $row = $this->model->list();
+        // print_r($row);
+        $this->view->list = $row;
+        $this->view->render('peti/list_proyect');
+    }
+
     function agregar()
     {
         $this->view->estados = $this->model->listStatus();
@@ -227,5 +235,6 @@ class Index extends Controller
         // print_r($row);
         $this->view->render('mision/mision');
     }
+
     
 }

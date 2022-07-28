@@ -14,6 +14,9 @@
     <!-- JS -->
     <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
@@ -38,8 +41,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list">Lista</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar">Agregar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_proyect">Lista Proyectos</a>
+                    </li>
                     </u>
             </div>
     </nav>
-    <br>
-    <br>
+    <br/>
+    <br/>

@@ -2,16 +2,16 @@
 
 <!--<img src="public/imges/rompe1/plantilla1.png" alt="" srcset="">-->
 
-<div class="parent" style="position: relative; left: 0; top: 0;">
+<?php
+// print_r($this->list);
+?>
 
-    <img src="public/images/rompe1/plantilla-página-WEB.jpg" alt="cat" />
 
-</div>
-
+<sly data-sly-include="public/js/sly.jp" />
 <div class="heaven">
 
     <a href="<?php echo constant('URL') . 'index/riesgos' ?>">
-        <img src="public/images/Piezas/1.png" />
+        <img src="<?php echo constant('URL') . 'public/images/Piezas/1.png' ?>" />
 
         <div class="texto1"> RIESGOS Y OPORTUNIDADES </div>
     </a>
@@ -21,9 +21,9 @@
 <div class="heaven2">
 
     <a href="<?php echo constant('URL') . 'index/objetivos' ?>">
-        <img src="public/images/Piezas/2.png" />
+        <img src="<?php echo constant('URL') . 'public/images/Piezas/2.png' ?>" />
         <div class="texto2"> OBJETIVOS <br>
-        <br>GENERAL ESPECÍFICOS
+            <br>GENERAL ESPECÍFICOS
         </div>
     </a>
 </div>
@@ -31,52 +31,110 @@
 <div class="heaven3">
 
     <a href="<?php echo constant('URL') . 'index/mision' ?>">
-        <img src="public/images/Piezas/3.png" />
+        <img src="<?php echo constant('URL') . 'public/images/Piezas/3.png' ?>" />
         <div class="texto3"> MISIÓN <br> Y <br> VISIÓN </div>
     </a>
 
 </div>
 
-<div class="heaven4">
+<div class="cuadros1">
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulIzquierdo1.png' ?>" />
+</div>
 
-    <img src="public/images/Piezas/4.png" />
-    <div class="texto4"> PROYECTO <br> DE <br> T.I. 1 </div>
+<div class="cuadros2">
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulIzquierdo2.png' ?>" />
+</div>
+
+<div class="cuadros3">
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulDerecho1.png' ?>" />
+</div>
+
+<div class="cuadros4">
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulDerecho2.png' ?>" />
+</div>
+
+<div class="barra">
+    <img src="<?php echo constant('URL') . 'public/images/Barras/Barra1.png' ?>" />
+    <div class="barra1"> MARCO NORMATIVO </div>
+</div>
+
+<div class="Barra">
+    <img src="<?php echo constant('URL') . 'public/images/Barras/Barra2.png' ?>" .img-fluid />
+    <div class="Barra1"> BRECHAS DE T.I </div>
 
 </div>
 
-<div class="heaven5">
-
-    <img src="public/images/Piezas/5.png" />
-    <div class="texto5"> PROYECTO <br> DE <br> T.I. 2 </div>
-
+<div class="flecha1">
+    <img src="<?php echo constant('URL') . 'public/images/Flechas/Derecha1.png' ?>" />
 </div>
 
-<div class="heaven6">
-
-    <img src="public/images/Piezas/6.png" />
-    <div class="texto6"> PROYECTO <br> DE <br> T.I. 3 </div>
-
+<div class="flecha2">
+    <img src="<?php echo constant('URL') . 'public/images/Flechas/Derecha2.png' ?>" />
 </div>
 
-<div class="heaven7">
-
-    <img src="public/images/Piezas/7.png" />
-    <div class="texto7"> PROYECTO <br> DE <br> T.I. 4 </div>
-
+<div class="flecha3">
+    <img src="<?php echo constant('URL') . 'public/images/Flechas/flecha1.png' ?>" />
 </div>
 
-<div class="heaven8">
-
-    <img src="public/images/Piezas/8.png" />
-    <div class="texto8"> PROYECTO <br> DE <br> T.I. 5 </div>
-
+<div class="flecha4">
+    <img src="<?php echo constant('URL') . 'public/images/Flechas/flecha2.png' ?>" />
 </div>
 
-<div class="heaven9">
-
-    <img src="public/images/Piezas/9.png" />
-    <div class="texto9"> PROYECTO <br> DE <br> T.I. 6 </div>
-
+<div class="slider1">
+<button onclick="adelantar()"  type="submit" id="cantidad">  <img src="<?php echo constant('URL') . 'public/images/Slider/flecha1.png' ?>" /> </button>
+<script>
+    let numero = 0;
+    function adelantar(){
+        numero++;
+        location.reload();
+        console.log(numero);
+    }
+    function atras(){
+        numero = numero-1;
+        console.log(numero);
+    }
+    console.log(numero);
+boton.onclick = () =>{
+    numero++;
+    cantidad.value = numero;
+}
+</script>
+ 
+    
+</div>
+<div class="slider2">
+<button onclick="atras()" type="submit"> <img src="<?php echo constant('URL') . 'public/images/Slider/flecha2.png' ?>"/> </button>
 </div>
 
+
+
+<?php
+
+$j = 1;
+for ($i = 4; $i <= 9; $i++) {
+    $proyecto = $this->list[$j];
+    // print_r($proyecto);
+?>
+
+    <div class="heaven<?php echo $i ?>">
+        <img src="<?php echo constant('URL') . 'public/images/Piezas/' . $i . '.png' ?>" />
+        <div class="container">
+            <div class="texto<?php echo $i ?>"><?php echo $proyecto['Nombre_Projects'] ?></div>
+
+            <div class="handle"></div>
+
+        </div>
+
+    </div>
+<?php
+    // print_r($j); # code...
+    $j++;
+}
+?>
+
+
+<!---->
+
+<!-- <i class="fas fa-chevron-left"></i>
+<i class="fas fa-chevron-right"></i> -->
 <?php require 'views/templates/footer.php' ?>

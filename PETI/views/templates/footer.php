@@ -1,7 +1,6 @@
-<br>
-<br>
-<br>
-
+<br/>
+<br/>
+<br/>
 <footer class="footer" style="position: fixed;
     bottom: 0px;
     width: 100%;

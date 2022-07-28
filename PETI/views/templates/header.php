@@ -32,9 +32,6 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index1">Lista</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar">Agregar</a>
                     </li>
                     <li class="nav-item">
