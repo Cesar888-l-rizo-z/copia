@@ -14,15 +14,15 @@ class Index extends Controller
     function render()
     {
         $row = $this->model->list();
-        // print_r($row);
+
         $this->view->list = $row;
+
         $this->view->render('peti/index');
     }
 
     function list()
     {
         $row = $this->model->list();
-        // print_r($row);
         $this->view->list = $row;
         $this->view->render('peti/list');
     }
@@ -30,7 +30,6 @@ class Index extends Controller
     function list_proyect()
     {
         $row = $this->model->list();
-        // print_r($row);
         $this->view->list = $row;
         $this->view->render('peti/list_proyect');
     }
@@ -38,10 +37,10 @@ class Index extends Controller
     function agregar()
     {
         $this->view->estados = $this->model->listStatus();
+        $this->view->procesos = $this->model->listproce();
         $this->view->render('peti/agregar');
     }
 
-  
     function crear()
     {
 
@@ -117,17 +116,14 @@ class Index extends Controller
         $nameprog = "evidence_docs" . date("dmY-His", $time);
         return $nameprog;
     }
-    
+
     function select($param = null)
     {
         $id = $param[0];
-        
         // print_r($id);
-
         $this->view->seleccionar = $this->model->select($id);
         $this->view->estados = $this->model->listStatus();
         $this->view->render('peti/update');
-        
     }
 
     function update()
@@ -167,7 +163,7 @@ class Index extends Controller
 
         if ($this->model->modificar(
             $data = [
-                'ID'                    => $id,   
+                'ID'                    => $id,
                 'nombre_projects'        => $txtNombre,
                 'objetivo'               => $txtObjetivo,
                 'proceso'                => $txtProceso,
@@ -195,10 +191,152 @@ class Index extends Controller
     function delete($param = null)
     {
         $id = $param[0];
-        
+
         // print_r($id);
 
-        if ( $this->model->delete($id)) {
+        if ($this->model->delete($id)) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Eliminado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al eliminar la informacion
+                </div>';
+            $this->render();
+        }
+    }
+
+    function riesgos()
+    {
+        $this->view->render('defaul/riesgos');
+    }
+
+    function objetivos()
+    {
+        $this->view->render('objetivo/objetivos');
+    }
+
+    function mision()
+    {
+        $this->view->render('mision/mision');
+    }
+
+    function agregar_brecha()
+    {
+        $this->view->render('peti/agregar_brecha');
+    }
+
+    function crearbrecha()
+    {
+
+        $txtNombre = $_POST['txtNombre'];
+        $txtRuptura = $_POST['txtRuptura'];
+        $txtstrategy1 = $_POST['txtstrategy1'];
+        $txtstrategy2 = $_POST['txtstrategy2'];
+        $txtstrategy3 = $_POST['txtstrategy3'];
+        $txtstrategy4 = $_POST['txtstrategy4'];
+        $txtstrategy5 = $_POST['txtstrategy5'];
+
+        if ($this->model->createbrecha(
+            $data = [
+                'nombre_rupt'        => $txtNombre,
+                'rupturas'               => $txtRuptura,
+                'estrategia1'                => $txtstrategy1,
+                'estrategia2'                => $txtstrategy2,
+                'estrategia3'                => $txtstrategy3,
+                'estrategia4'                => $txtstrategy4,
+                'estrategia5'                => $txtstrategy5,
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('brechas/brecha');
+        }
+    }
+
+    function list_brech()
+    {
+        $row = $this->model->vist();
+        // print_r($row);
+        $this->view->vist = $row;
+        $this->view->render('peti/list_brech');
+    }
+
+    function vista()
+    {
+        $row = $this->model->vist();
+        // print_r($row);
+        $this->view->vist = $row;
+        $this->view->render('brechas/vista');
+    }
+
+    function select_brechas($param = null)
+    {
+        $idbrechasTI = $param[0];
+        
+        //  print_r($idbrechasTI);
+
+        $this->view->seleccionar = $this->model->select_brechas($idbrechasTI);
+        $this->view->render('peti/update_brechas');
+        
+    }
+
+    function update_brechas()
+    {
+
+        $idbrechasTI = $_POST['txtID'];
+        $txtNombre = $_POST['txtNombre'];
+        $txtRuptura = $_POST['txtRuptura'];
+        $txtstrategy1 = $_POST['txtstrategy1'];
+        $txtstrategy2 = $_POST['txtstrategy2'];
+        $txtstrategy3 = $_POST['txtstrategy3'];
+        $txtstrategy4 = $_POST['txtstrategy4'];
+        $txtstrategy5 = $_POST['txtstrategy5'];
+
+        if ($this->model->modificar_brecha(
+            $data = [
+                'ID'                    => $idbrechasTI,   
+                'nombre_rupt'        => $txtNombre,
+                'rupturas'               => $txtRuptura,
+                'estrategia1'                => $txtstrategy1,
+                'estrategia2'                => $txtstrategy2,
+                'estrategia3'                => $txtstrategy3,
+                'estrategia4'                => $txtstrategy4,
+                'estrategia5'                => $txtstrategy5
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('peti/agregar_brecha');
+        }
+    }
+
+    function delete_brechas($param = null)
+    {
+        $idbrechasTI = $param[0];
+        
+        // print_r($idbrechasTI);
+
+        if ( $this->model->delete_brechas($idbrechasTI)) {
             $this->view->mensaje =
                 '<div class="alert alert-info" role="alert">
                     Eliminado con exito
@@ -214,27 +352,4 @@ class Index extends Controller
         
         
     }
-
-    function riesgos()
-    {
-        
-        // print_r($row);
-        $this->view->render('defaul/riesgos');
-    }
-
-    function objetivos()
-    {
-        
-        // print_r($row);
-        $this->view->render('objetivo/objetivos');
-    }
-
-    function mision()
-    {
-        
-        // print_r($row);
-        $this->view->render('mision/mision');
-    }
-
-    
 }

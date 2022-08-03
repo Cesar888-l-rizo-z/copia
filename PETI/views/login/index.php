@@ -37,9 +37,6 @@
 	<script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<script>
-		AOS.init();
-	</script>
 	<title>Ejercicio</title>
 
 </head>

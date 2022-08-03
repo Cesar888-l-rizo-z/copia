@@ -18,9 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    
     <title>Ejercicio</title>
 
 </head>
@@ -47,8 +46,15 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_proyect">Lista Proyectos</a>
                     </li>
-                    </u>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_brecha">Creat_Brech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_brech">list_Brech</a>
+                    </li>
+                    </ul>
             </div>
+        </div>
     </nav>
-    <br/>
-    <br/>
+    <br />
+    <br />

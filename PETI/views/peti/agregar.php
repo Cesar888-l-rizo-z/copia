@@ -15,11 +15,6 @@
 
             <form action="<?php echo constant('URL') ?>index/crear" method="POST" enctype="multipart/form-data">
 
-                <!-- <div class="form-group">
-                    <label for="txtID">ID:</label>
-                    <input type="text" required readonly class="form-control" value="" name="txtID" id="txtID" placeholder="ID">
-                </div> -->
-
                 <div class="form-group">
                     <label for="txtNombre">Nombre del proyecto:</label>
                     <input type="text" required class="form-control" value="" name="txtNombre" id="txtNombre" placeholder="Nombre del proyecto">
@@ -30,10 +25,18 @@
                     <textarea required class="form-control" value="" name="txtObjetivo" id="txtObjetivo" placeholder="Objetivo del proyecto" rows="3"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="txtProceso">Proceso:</label>
-                    <input type="text" required class="form-control" value="" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
-                </div>
+                <label for="estado" class="form-label">Proceso:</label>
+                <select class='form-select' id="txtProceso" name='txtProceso' required>
+                    <option hidden value='' selected>Selecciona el proceso</option>
+                    <?php
+                    foreach ($this->procesos as $key) {
+                    ?>
+                        <option value="<?php echo $key['idproceso'] ?>"><?php echo $key['descripcion'] ?></option>
+                    <?php
+                    }
+
+                    ?>
+                </select>
 
                 <div class="Fecha De Creacion">
                     <label for="txtFecha_Creacion">Fecha_Creacion</label>
@@ -46,7 +49,7 @@
                 </div>
 
                 <label for="estado" class="form-label">Estado:</label>
-                <!-- <select class='mi-selector' name='txtStatus'> -->
+            
                 <select class='form-select' id="estado" name='txtStatus' required>
                     <option hidden value='' selected>Selecciona el resultado</option>
                     <?php
@@ -69,7 +72,7 @@
                 </div>
 
                 <div>
-                    <input type="submit" value="Enviar">
+                    <input type="submit" class="btn btn-success"  value="Agregar">
                 </div>
 
             </form>

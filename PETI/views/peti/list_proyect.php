@@ -12,7 +12,7 @@
         ?>
             <div class="col-md-3">
                 <div class="card">
-                    <img class="card-img-top" src="public/images/<?php echo $list['Imagen']; ?>" alt="">
+                    <img class="card-img-top" src="" alt="">
 
                     <div class="card-body">
 

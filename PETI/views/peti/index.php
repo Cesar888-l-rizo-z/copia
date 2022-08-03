@@ -1,13 +1,5 @@
 <?php require 'views/templates/header_2.php' ?>
 
-<!--<img src="public/imges/rompe1/plantilla1.png" alt="" srcset="">-->
-
-<?php
-// print_r($this->list);
-?>
-
-
-<sly data-sly-include="public/js/sly.jp" />
 <div class="heaven">
 
     <a href="<?php echo constant('URL') . 'index/riesgos' ?>">
@@ -59,8 +51,10 @@
 </div>
 
 <div class="Barra">
-    <img src="<?php echo constant('URL') . 'public/images/Barras/Barra2.png' ?>" .img-fluid />
-    <div class="Barra1"> BRECHAS DE T.I </div>
+    <a href="<?php echo constant('URL') . 'index/vista' ?>">
+        <img src="<?php echo constant('URL') . 'public/images/Barras/Barra2.png' ?>" .img-fluid />
+        <div class="Barra1"> BRECHAS DE T.I </div>
+    </a>
 
 </div>
 
@@ -81,36 +75,41 @@
 </div>
 
 <div class="slider1">
-<button onclick="adelantar()"  type="submit" id="cantidad">  <img src="<?php echo constant('URL') . 'public/images/Slider/flecha1.png' ?>" /> </button>
-<script>
-    let numero = 0;
-    function adelantar(){
-        numero++;
-        location.reload();
+    <button onclick="adelantar()" type="submit" id="cantidad"> <img src="<?php echo constant('URL') . 'public/images/Slider/flecha1.png' ?>" /> </button>
+    <script>
+        let numero = 0;
+
+        function adelantar() {
+            numero++;
+            // location.reload();
+            console.log(numero);
+        }
+        // setTimeout(function() {
+        //     window.location.reload();
+        // }, 60000);
+
+        function atras() {
+            numero = numero - 1;
+            console.log(numero);
+        }
         console.log(numero);
-    }
-    function atras(){
-        numero = numero-1;
-        console.log(numero);
-    }
-    console.log(numero);
-boton.onclick = () =>{
-    numero++;
-    cantidad.value = numero;
-}
-</script>
- 
-    
+        boton.onclick = () => {
+            numero++;
+            cantidad.value = numero;
+        }
+    </script>
+
+
 </div>
 <div class="slider2">
-<button onclick="atras()" type="submit"> <img src="<?php echo constant('URL') . 'public/images/Slider/flecha2.png' ?>"/> </button>
+    <button onclick="atras()" type="submit"> <img src="<?php echo constant('URL') . 'public/images/Slider/flecha2.png' ?>" /> </button>
 </div>
 
 
 
 <?php
 
-$j = 1;
+$j = 2;
 for ($i = 4; $i <= 9; $i++) {
     $proyecto = $this->list[$j];
     // print_r($proyecto);
@@ -133,8 +132,4 @@ for ($i = 4; $i <= 9; $i++) {
 ?>
 
 
-<!---->
-
-<!-- <i class="fas fa-chevron-left"></i>
-<i class="fas fa-chevron-right"></i> -->
 <?php require 'views/templates/footer.php' ?>

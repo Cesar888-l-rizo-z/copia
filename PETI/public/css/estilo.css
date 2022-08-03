@@ -1,8 +1,4 @@
-.pagina {
-  background-image: url("public/images/rompe1/plantilla-página-WEB.jpg");
-  z-index: 99999;
-  /* box-sizing: border-box; */
-}
+body { min-height: 100vh; }
 
 .parent {
   text-align: center;
