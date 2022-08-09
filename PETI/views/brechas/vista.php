@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="row justify-content-center">
 
 
 
@@ -10,25 +10,23 @@
         foreach ($this->vist as $key) {
             // print_r($key);
         ?>
-            <div class="col-md-3">
-                <div class="card">
 
-                    <div class="card-body">
-
-                        <h4 class="card-title"><?php echo $key['nombre_rupturas']; ?></h4>
-                        <h4 class="card-title"><?php echo  $key['ruptura']; ?></h4>
-                        <h4 class="card-title"><?php echo  $key['estrategia1']; ?></h4>
-                        <h4 class="card-title"><?php echo  $key['estrategia2']; ?></h4>
-                        <h4 class="card-title"><?php echo  $key['estrategia3']; ?></h4>
-                        <h4 class="card-title"><?php echo  $key['estrategia4']; ?></h4>
-                        <h4 class="card-title"><?php echo  $key['estrategia5']; ?></h4>
-                    </div>
-
+            <div class=" card text-white bg-dark mb-3 " style="max-width: 18rem;">
+                <div class="card-header">
+                    <!-- <img src="<?php echo constant('URL') . 'public/images/' ?>" class="card-img-top" alt=""> -->
+                    <h4 class="card-title"><?php echo $key['nombre_rupturas']; ?></h4>
+                    <p class="card-text"><?php echo  $key['ruptura']; ?></p>
+                    <p class="card-text"><?php echo  $key['estrategia1']; ?></p>
+                    <p class="card-text"><?php echo  $key['estrategia2']; ?></p>
+                    <p class="card-text"><?php echo  $key['estrategia3']; ?></p>
+                    <p class="card-text"><?php echo  $key['estrategia4']; ?></p>
+                    <p class="card-text"><?php echo  $key['estrategia5']; ?></p>
                 </div>
 
             </div>
         <?php
         } ?>
+
     </div>
 </div>
 

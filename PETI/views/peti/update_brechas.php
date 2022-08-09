@@ -59,12 +59,6 @@
                     <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia5']; ?>" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
                 </div>
 
-                <!-- <div class="btn-group" role="group" aria-label="">
-                    <button type="submit" name="accion" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> value="Agregar" class="btn btn-success">Agregar</button>
-                    <button type="submit" name="accion" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?> value="Modificar" class="btn btn-warning">Modificar</button>
- 
-                </div> -->
-
                 <div>
                     <input type="submit" value="Modificar">
                 </div>

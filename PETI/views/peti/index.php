@@ -30,7 +30,10 @@
 </div>
 
 <div class="cuadros1">
-    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulIzquierdo1.png' ?>" />
+    <a href="<?php echo constant('URL') . 'index/strategic_context' ?>">
+        <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulIzquierdo1.png' ?>" />
+        <div class="contex"> CONTEXTO ESTRATÉGICO </div>
+    </a>
 </div>
 
 <div class="cuadros2">
@@ -46,8 +49,11 @@
 </div>
 
 <div class="barra">
-    <img src="<?php echo constant('URL') . 'public/images/Barras/Barra1.png' ?>" />
-    <div class="barra1"> MARCO NORMATIVO </div>
+    <a href="<?php echo constant('URL') . 'index/marc_norma' ?>">
+        <img src="<?php echo constant('URL') . 'public/images/Barras/Barra1.png' ?>" />
+        <div class="barra1"> MARCO NORMATIVO </div>
+    </a>
+
 </div>
 
 <div class="Barra">

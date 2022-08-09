@@ -15,11 +15,6 @@
 
             <form action="<?php echo constant('URL') ?>index/crear" method="POST" enctype="multipart/form-data">
 
-                <!-- <div class="form-group">
-                    <label for="txtID">ID:</label>
-                    <input type="text" required readonly class="form-control" value="" name="txtID" id="txtID" placeholder="ID">
-                </div> -->
-
                 <div class="form-group">
                     <label for="txtNombre">Nombre del proyecto:</label>
                     <input type="text" required class="form-control" value="" name="txtNombre" id="txtNombre" placeholder="Nombre del proyecto">
@@ -45,8 +40,8 @@
                     <input type="datetime-local" required class="form-control" name="txtDeadline" id="txt_fechalimite_Reg" placeholder="Seleccione la fecha limite de creacion">
                 </div>
 
+                <div>
                 <label for="estado" class="form-label">Estado:</label>
-                <!-- <select class='mi-selector' name='txtStatus'> -->
                 <select class='form-select' id="estado" name='txtStatus' required>
                     <option hidden value='' selected>Selecciona el resultado</option>
                     <?php
@@ -58,6 +53,7 @@
 
                     ?>
                 </select>
+                </div>
 
                 <div class="form-group"> <label for="archivo" class="col-ms-2 control-label">Archivo</label>
                     <div class="col-sm-15"> <input type="file" class="form-control" id="archivo" name="txtuploadedFile" /> </div>
@@ -67,12 +63,6 @@
                     <label for="txtImagen">Imagen:</label>
                     <input type="file" class="form-control" name="txtImagen" id="txtImagen" accept="image/*">
                 </div>
-
-                <!-- <div class="btn-group" role="group" aria-label="">
-                    <button type="submit" name="accion" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> value="Agregar" class="btn btn-success">Agregar</button>
-                    <button type="submit" name="accion" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?> value="Modificar" class="btn btn-warning">Modificar</button>
-                    <button type="submit" name="accion" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?> value="Cancelar" class="btn btn-info">Cancelar</button>
-                </div> -->
 
                 <div>
                     <input type="submit" value="Enviar">

@@ -19,7 +19,7 @@
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    
+
     <title>Ejercicio</title>
 
 </head>
@@ -52,7 +52,19 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_brech">list_Brech</a>
                     </li>
-                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_context">Create_Context</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_context">list_Context</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_marco">Crear_Marco</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/listmarco">Lista_MArco</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

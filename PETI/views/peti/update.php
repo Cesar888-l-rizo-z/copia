@@ -46,22 +46,23 @@
                 <br />
                 <div class="Fecha Limite">
                     <label>Fecha_Limite</label>
-                    <input type="datetime-local" required class="form-control"  value="<?php echo $seleccion['Fecha_Limite']; ?>" name="txtDeadline" id="txt_fechalimite_Reg" placeholder="Seleccione la fecha limite de creacion">
+                    <input type="datetime-local" required class="form-control" value="<?php echo $seleccion['Fecha_Limite']; ?>" name="txtDeadline" id="txt_fechalimite_Reg" placeholder="Seleccione la fecha limite de creacion">
                 </div>
 
-                <label for="estado" class="form-label">Estado:</label>
-                <!-- <select class='mi-selector' name='txtStatus'> -->
-                <select class='form-select' value="<?php echo $seleccion['Estado']; ?>" name='txtStatus' id="estado" required>
-                    <!-- <option hidden value='' selected>Selecciona el resultado</option> -->
-                    <?php
-                    foreach ($this->estados as $key) {
-                    ?>
-                        <option value="<?php echo $key['idestado'] ?>" <?PHP echo $key['idestado'] ==  $seleccion['Estado']?'selected' :'' ?>><?php echo $key['descripcion'] ?></option>
-                    <?php
-                    }
+                <div>
+                    <label for="estado" class="form-label">Estado:</label>
+                    <select class='form-select' value="<?php echo $seleccion['Estado']; ?>" name='txtStatus' id="estado" required>
 
-                    ?>
-                </select>
+                        <?php
+                        foreach ($this->estados as $key) {
+                        ?>
+                            <option value="<?php echo $key['idestado'] ?>" <?PHP echo $key['idestado'] ==  $seleccion['Estado'] ? 'selected' : '' ?>><?php echo $key['descripcion'] ?></option>
+                        <?php
+                        }
+
+                        ?>
+                    </select>
+                </div>
 
                 <div class="form-group"> <label for="archivo" class="col-ms-2 control-label">Archivo</label>
                     <div class="col-sm-15"> <input type="file" class="form-control" value="<?php echo $seleccion['Archivo']; ?>" id="archivo" name="txtuploadedFile" /> </div>
@@ -71,12 +72,6 @@
                     <label for="txtImagen">Imagen:</label>
                     <input type="file" class="form-control" value="<?php echo $seleccion['Imagen']; ?>" name="txtImagen" id="txtImagen" accept="image/*">
                 </div>
-
-                <!-- <div class="btn-group" role="group" aria-label="">
-                    <button type="submit" name="accion" <?php echo ($accion == "Seleccionar") ? "disabled" : ""; ?> value="Agregar" class="btn btn-success">Agregar</button>
-                    <button type="submit" name="accion" <?php echo ($accion != "Seleccionar") ? "disabled" : ""; ?> value="Modificar" class="btn btn-warning">Modificar</button>
- 
-                </div> -->
 
                 <div>
                     <input type="submit" value="Modificar">

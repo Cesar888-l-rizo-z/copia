@@ -196,7 +196,7 @@ class IndexModel extends Model
     public function createbrecha($data)
     {
 
-       print_r($data);
+    //    print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO brechast_i(
@@ -324,6 +324,251 @@ class IndexModel extends Model
             echo $e->getMessage();
             // echo "Este documento ya esta registrado";
             return false;
+        }
+    }
+
+    function agregar_context()
+    {
+        $this->view->render('peti/agregar_context');
+    }
+
+    public function createcontexto($data)
+    {
+
+    //    print_r($data);
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO strategic_context(
+                    nombre_context,
+                    descripcion,
+                    No1,
+                    No2,
+                    No3,
+                    No4,
+                    No5,
+                    No6,
+                    No7,
+                    No8,
+                    No9,
+                    No10,
+                    No11,
+                    No12,
+                    No13,
+                    No14,
+                    No15
+                )
+                VALUES(
+                    :nombre_context,
+                    :descripcion,
+                    :No1,
+                    :No2,
+                    :No3,
+                    :No4,
+                    :No5,
+                    :No6,
+                    :No7,
+                    :No8,
+                    :No9,
+                    :No10,
+                    :No11,
+                    :No12,
+                    :No13,
+                    :No14,
+                    :No15
+                );'
+            );
+
+        
+            $query->bindParam(':nombre_context', $data['nombre_context']);
+            $query->bindParam(':descripcion', $data['descripcion']);
+            $query->bindParam(':No1', $data['No1']);
+            $query->bindParam(':No2', $data['No2']);
+            $query->bindParam(':No3', $data['No3']);
+            $query->bindParam(':No4', $data['No4']);
+            $query->bindParam(':No5', $data['No5']);
+            $query->bindParam(':No6', $data['No6']);
+            $query->bindParam(':No7', $data['No7']);
+            $query->bindParam(':No8', $data['No8']);
+            $query->bindParam(':No9', $data['No9']);
+            $query->bindParam(':No10', $data['No10']);
+            $query->bindParam(':No11', $data['No11']);
+            $query->bindParam(':No12', $data['No12']);
+            $query->bindParam(':No13', $data['No13']);
+            $query->bindParam(':No14', $data['No14']);
+            $query->bindParam(':No15', $data['No15']);
+            $query->execute();
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function vistlist_context()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM strategic_context');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function select_context($idstrategic_context)
+    {
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM strategic_context WHERE idstrategic_context=:idstrategic_context');
+            $query->execute([':idstrategic_context' => $idstrategic_context]);
+
+            $row = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function modificar_context($data)
+    {
+
+        try {
+            $query = $this->db->connect()->prepare(
+                'UPDATE
+                    strategic_context
+                SET
+                    nombre_context = :nombre_context,
+                    descripcion = :descripcion,
+                    No1 = :No1,
+                    No2 = :No2,
+                    No3 = :No3,
+                    No4 = :No4,
+                    No5 = :No5,
+                    No6 = :No6,
+                    No7 = :No7,
+                    No8 = :No8,
+                    No9 = :No9,
+                    No10 = :No10,
+                    No11 = :No11,
+                    No12 = :No12,
+                    No13 = :No13,
+                    No14 = :No14,
+                    No15 = :No15
+            
+                WHERE
+                idstrategic_context = :idstrategic_context'
+            );
+
+            $query->bindParam(':nombre_context', $data['nombre_context']);
+            $query->bindParam(':descripcion', $data['descripcion']);
+            $query->bindParam(':No1', $data['No1']);
+            $query->bindParam(':No2', $data['No2']);
+            $query->bindParam(':No3', $data['No3']);
+            $query->bindParam(':No4', $data['No4']);
+            $query->bindParam(':No5', $data['No5']);
+            $query->bindParam(':No6', $data['No6']);
+            $query->bindParam(':No7', $data['No7']);
+            $query->bindParam(':No8', $data['No8']);
+            $query->bindParam(':No9', $data['No9']);
+            $query->bindParam(':No10', $data['No10']);
+            $query->bindParam(':No11', $data['No11']);
+            $query->bindParam(':No12', $data['No12']);
+            $query->bindParam(':No13', $data['No13']);
+            $query->bindParam(':No14', $data['No14']);
+            $query->bindParam(':No15', $data['No15']);
+            $query->execute();
+
+            
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function delete_context($idstrategic_context)
+    {
+        try {
+            $query = $this->db->connect()->prepare('DELETE FROM strategic_context WHERE idstrategic_context=:idstrategic_context');
+            $query->execute([':idstrategic_context' => $idstrategic_context]);
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    function agregar_marco()
+    {
+        $this->view->render('marco/agregar_marco');
+    }
+
+    public function createmarco($data)
+    {
+
+    //    print_r($data);
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO regulatory_framework(
+                    norma_ley,
+                    resumen,
+                    link,
+                    observacion
+                )
+                VALUES(
+                    :norma_ley,
+                    :resumen,
+                    :link,
+                    :observacion
+                );'
+            );
+
+        
+            $query->bindParam(':norma_ley', $data['norma_ley']);
+            $query->bindParam(':resumen', $data['resumen']);
+            $query->bindParam(':link', $data['link']);
+            $query->bindParam(':observacion', $data['observacion']);
+            $query->execute();
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function vistmarco()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM regulatory_framework');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
         }
     }
 

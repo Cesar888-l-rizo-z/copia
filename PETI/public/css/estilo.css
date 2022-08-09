@@ -340,6 +340,25 @@ a {
   /* opacity: 0.5; */
 }
 
+.cuadros1 {
+  transition: transform 0.2s;
+}
+
+.cuadros1:hover {
+  transform: scale(1.5);
+  z-index: 99999;
+}
+.contex {
+  text-align: center;
+  position: absolute;
+  top: 69px;
+  left: -3px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 17px;
+  -webkit-text-stroke-width: thick;
+  color: rgb(0, 0, 0);
+}
+
 .cuadros2 {
   position: absolute;
   overflow: hidden;
@@ -387,7 +406,7 @@ a {
   padding: 1px;
   margin: 10px;
   top: 61px; /* ajustar los valores para mover la imagen */
-  left: 70px;
+  left: 81px;
   z-index:9999999;
 }
 .img-fluid{

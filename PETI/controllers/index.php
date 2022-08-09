@@ -261,7 +261,7 @@ class Index extends Controller
                 '<div class="alert alert-danger" role="alert">
                     Ocurrio un problema al almacenar la informacion
                 </div>';
-            $this->view->render('brechas/brecha');
+            $this->view->render('peti/agregar_brecha');
         }
     }
 
@@ -352,4 +352,225 @@ class Index extends Controller
         
         
     }
+
+    function agregar_context()
+    {
+        $this->view->render('peti/agregar_context');
+    }
+
+    function crearcontexto()
+    {
+
+        $txtNombre = $_POST['txtNombre'];
+        $txtOportunidad = $_POST['txtOportunidad'];
+        $txtNo1 = $_POST['txtNo1'];
+        $txtNo2 = $_POST['txtNo2'];
+        $txtNo3 = $_POST['txtNo3'];
+        $txtNo4 = $_POST['txtNo4'];
+        $txtNo5 = $_POST['txtNo5'];
+        $txtNo6 = $_POST['txtNo6'];
+        $txtNo7 = $_POST['txtNo7'];
+        $txtNo8 = $_POST['txtNo8'];
+        $txtNo9 = $_POST['txtNo9'];
+        $txtNo10 = $_POST['txtNo10'];
+        $txtNo11 = $_POST['txtNo11'];
+        $txtNo12 = $_POST['txtNo12'];
+        $txtNo13 = $_POST['txtNo13'];
+        $txtNo14 = $_POST['txtNo14'];
+        $txtNo15 = $_POST['txtNo15'];
+
+        if ($this->model->createcontexto(
+            $data = [
+                'nombre_context'        => $txtNombre,
+                'descripcion'               => $txtOportunidad,
+                'No1'                => $txtNo1,
+                'No2'                => $txtNo2,
+                'No3'                => $txtNo3,
+                'No4'                => $txtNo4,
+                'No5'                => $txtNo5,
+                'No6'                => $txtNo6,
+                'No7'                => $txtNo7,
+                'No8'                => $txtNo8,
+                'No9'                => $txtNo9,
+                'No10'                => $txtNo10,
+                'No11'                => $txtNo11,
+                'No12'                => $txtNo12,
+                'No13'                => $txtNo13,
+                'No14'                => $txtNo14,
+                'No15'                => $txtNo15
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('peti/agregar_context');
+        }
+    }
+
+    function list_context()
+    {
+        $row = $this->model->vistlist_context();
+        // print_r($row);
+        $this->view->vistlist_context = $row;
+        $this->view->render('peti/list_context');
+    }
+
+    function strategic_context()
+    {
+        $row = $this->model->vistlist_context();
+        // print_r($row);
+        $this->view->vistlist_context = $row;
+        $this->view->render('strategic_context/strategic_context');
+    }
+
+    function select_context($param = null)
+    {
+        $idstrategic_context = $param[0];
+        
+        //  print_r($idstrategic_context);
+
+        $this->view->seleccionar = $this->model->select_context($idstrategic_context);
+        $this->view->render('peti/update_context');
+        
+    }
+
+    function update_context()
+    {
+
+        $idstrategic_context = $_POST['txtID'];
+        $txtNombre = $_POST['txtNombre'];
+        $txtOportunidad = $_POST['txtOportunidad'];
+        $txtNo1 = $_POST['txtNo1'];
+        $txtNo2 = $_POST['txtNo2'];
+        $txtNo3 = $_POST['txtNo3'];
+        $txtNo4 = $_POST['txtNo4'];
+        $txtNo5 = $_POST['txtNo5'];
+        $txtNo6 = $_POST['txtNo6'];
+        $txtNo7 = $_POST['txtNo7'];
+        $txtNo8 = $_POST['txtNo8'];
+        $txtNo9 = $_POST['txtNo9'];
+        $txtNo10 = $_POST['txtNo10'];
+        $txtNo11 = $_POST['txtNo11'];
+        $txtNo12 = $_POST['txtNo12'];
+        $txtNo13 = $_POST['txtNo13'];
+        $txtNo14 = $_POST['txtNo14'];
+        $txtNo15 = $_POST['txtNo15'];
+
+        if ($this->model->modificar_context(
+            $data = [
+                'ID'                    => $idstrategic_context,   
+                'nombre_context'        => $txtNombre,
+                'descripcion'               => $txtOportunidad,
+                'No1'                => $txtNo1,
+                'No2'                => $txtNo2,
+                'No3'                => $txtNo3,
+                'No4'                => $txtNo4,
+                'No5'                => $txtNo5,
+                'No6'                => $txtNo6,
+                'No7'                => $txtNo7,
+                'No8'                => $txtNo8,
+                'No9'                => $txtNo9,
+                'No10'                => $txtNo10,
+                'No11'                => $txtNo11,
+                'No12'                => $txtNo12,
+                'No13'                => $txtNo13,
+                'No14'                => $txtNo14,
+                'No15'                => $txtNo15
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('peti/agregar_context');
+        }
+    }
+
+    function delete_context($param = null)
+    {
+        $idstrategic_context = $param[0];
+        
+        // print_r($idstrategic_context);
+
+        if ( $this->model->delete_context($idstrategic_context)) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Eliminado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al eliminar la informacion
+                </div>';
+                $this->render();
+        }
+        
+        
+    }
+
+    function agregar_marco()
+    {
+        $this->view->render('marco/agregar_marco');
+    }
+
+    function crearmarco()
+    {
+
+        $txtNombre = $_POST['txtNombre'];
+        $txtResumen = $_POST['txtResumen'];
+        $txtLink = $_POST['txtLink'];
+        $txtObservacion = $_POST['txtObservacion'];
+        if ($this->model->createmarco(
+            $data = [
+                'norma_ley'        => $txtNombre,
+                'resumen'               => $txtResumen,
+                'link'                => $txtLink,
+                'observacion'                => $txtObservacion
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('marco/agregar_marco');
+        }
+    }
+
+    function listmarco()
+    {
+        $row = $this->model->vistmarco();
+        // print_r($row);
+        $this->view->vistmarco = $row;
+        $this->view->render('marco/listmarco');
+    }
+
+    function marc_norma()
+    {
+        $row = $this->model->vistmarco();
+        // print_r($row);
+        $this->view->vistmarco = $row;
+        $this->view->render('marco/marc_norma');
+    }
+
+
 }

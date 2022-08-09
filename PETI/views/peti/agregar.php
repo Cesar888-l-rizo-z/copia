@@ -25,18 +25,20 @@
                     <textarea required class="form-control" value="" name="txtObjetivo" id="txtObjetivo" placeholder="Objetivo del proyecto" rows="3"></textarea>
                 </div>
 
-                <label for="estado" class="form-label">Proceso:</label>
-                <select class='form-select' id="txtProceso" name='txtProceso' required>
-                    <option hidden value='' selected>Selecciona el proceso</option>
-                    <?php
-                    foreach ($this->procesos as $key) {
-                    ?>
-                        <option value="<?php echo $key['idproceso'] ?>"><?php echo $key['descripcion'] ?></option>
-                    <?php
-                    }
+                <div>
+                    <label for="estado" class="form-label">Proceso:</label>
+                    <select class='form-select' id="txtProceso" name='txtProceso' required>
+                        <option hidden value='' selected>Selecciona el proceso</option>
+                        <?php
+                        foreach ($this->procesos as $key) {
+                        ?>
+                            <option value="<?php echo $key['idproceso'] ?>"><?php echo $key['descripcion'] ?></option>
+                        <?php
+                        }
 
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </div>
 
                 <div class="Fecha De Creacion">
                     <label for="txtFecha_Creacion">Fecha_Creacion</label>
@@ -48,19 +50,20 @@
                     <input type="datetime-local" required class="form-control" name="txtDeadline" id="txt_fechalimite_Reg" placeholder="Seleccione la fecha limite de creacion">
                 </div>
 
-                <label for="estado" class="form-label">Estado:</label>
-            
-                <select class='form-select' id="estado" name='txtStatus' required>
-                    <option hidden value='' selected>Selecciona el resultado</option>
-                    <?php
-                    foreach ($this->estados as $key) {
-                    ?>
-                        <option value="<?php echo $key['idestado'] ?>"><?php echo $key['descripcion'] ?></option>
-                    <?php
-                    }
+                <div>
+                    <label for="estado" class="form-label">Estado:</label>
+                    <select class='form-select' id="estado" name='txtStatus' required>
+                        <option hidden value='' selected>Selecciona el resultado</option>
+                        <?php
+                        foreach ($this->estados as $key) {
+                        ?>
+                            <option value="<?php echo $key['idestado'] ?>"><?php echo $key['descripcion'] ?></option>
+                        <?php
+                        }
 
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </div>
 
                 <div class="form-group"> <label for="archivo" class="col-ms-2 control-label">Archivo</label>
                     <div class="col-sm-15"> <input type="file" class="form-control" id="archivo" name="txtuploadedFile" /> </div>
@@ -72,7 +75,7 @@
                 </div>
 
                 <div>
-                    <input type="submit" class="btn btn-success"  value="Agregar">
+                    <input type="submit" class="btn btn-success" value="Agregar">
                 </div>
 
             </form>
