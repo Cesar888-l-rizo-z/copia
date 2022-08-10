@@ -30,33 +30,33 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="txtObjetivo">Descripcion de la ruptura:</label>
-                    <textarea required class="form-control" value="<?php echo $seleccion['ruptura']; ?>" name="txtObjetivo" id="txtObjetivo" placeholder="Objetivo del proyecto" rows="3"></textarea>
+                    <label for="txtRuptura">Descripcion de la ruptura:</label>
+                    <textarea required class="form-control" value="<?php echo $seleccion['ruptura']; ?>" name="txtRuptura" id="txtRuptura" placeholder="Objetivo del proyecto" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="txtProceso">Estrategia:</label>
-                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia1']; ?>" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
+                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia1']; ?>" name="txtstrategy1" id="txtstrategy1" placeholder="Proceso del proyecto">
                 </div>
 
                 <div class="form-group">
                     <label for="txtProceso">Estrategia:</label>
-                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia2']; ?>" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
+                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia2']; ?>" name="txtstrategy2" id="txtstrategy2" placeholder="Proceso del proyecto">
                 </div>
                 <br />
                 <div class="form-group">
                     <label for="txtProceso">Estrategia:</label>
-                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia3']; ?>" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
+                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia3']; ?>" name="txtstrategy3" id="txtstrategy3" placeholder="Proceso del proyecto">
                 </div>
 
                 <div class="form-group">
                     <label for="txtProceso">Estrategia:</label>
-                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia4']; ?>" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
+                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia4']; ?>" name="txtstrategy4" id="txtstrategy4" placeholder="Proceso del proyecto">
                 </div>
 
                 <div class="form-group">
                     <label for="txtProceso">Estrategia:</label>
-                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia5']; ?>" name="txtProceso" id="txtProceso" placeholder="Proceso del proyecto">
+                    <input type="text" required class="form-control" value="<?php echo $seleccion['estrategia5']; ?>" name="txtstrategy5" id="txtstrategy5" placeholder="Proceso del proyecto">
                 </div>
 
                 <div>

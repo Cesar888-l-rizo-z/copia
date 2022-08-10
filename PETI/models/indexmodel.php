@@ -572,4 +572,68 @@ class IndexModel extends Model
         }
     }
 
+    public function select_marco($idframework)
+    {
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM regulatory_framework WHERE idframework=:idframework');
+            $query->execute([':idframework' => $idframework]);
+
+            $row = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function modificar_marco($data)
+    {
+
+        try {
+            $query = $this->db->connect()->prepare(
+                'UPDATE
+                    regulatory_framework
+                SET
+                    norma_ley = :norma_ley,
+                    resumen = :resumen,
+                    link = :link,
+                    observacion = :observacion
+            
+                WHERE
+                idframework = :idframework'
+            );
+
+            $query->bindParam(':norma_ley', $data['norma_ley']);
+            $query->bindParam(':resumen', $data['resumen']);
+            $query->bindParam(':link', $data['link']);
+            $query->bindParam(':observacion', $data['observacion']);
+            $query->execute();
+
+            
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function delete_marco($idframework)
+    {
+        try {
+            $query = $this->db->connect()->prepare('DELETE FROM regulatory_framework WHERE idframework=:idframework');
+            $query->execute([':idframework' => $idframework]);
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
 }

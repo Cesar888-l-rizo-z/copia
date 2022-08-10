@@ -26,8 +26,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="txtLink">Link de descarga:</label>
-                    <input type="text" class="form-control" value="" name="txtLink" id="txtLink" placeholder="Link de descarga">
+                    <label for="txtLink">Enter an https:// URL</label>
+                        <br/>
+                    <input type="url" name="txtLink" id="txtLink" placeholder="https://example.com" pattern="https://.*" size="140" required>
                 </div>
 
                 <div class="form-group">

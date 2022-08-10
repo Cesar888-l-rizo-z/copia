@@ -62,7 +62,7 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_marco">Crear_Marco</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/listmarco">Lista_MArco</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_marco">Lista_MArco</a>
                     </li>
                 </ul>
             </div>

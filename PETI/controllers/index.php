@@ -556,12 +556,12 @@ class Index extends Controller
         }
     }
 
-    function listmarco()
+    function list_marco()
     {
         $row = $this->model->vistmarco();
         // print_r($row);
         $this->view->vistmarco = $row;
-        $this->view->render('marco/listmarco');
+        $this->view->render('marco/list_marco');
     }
 
     function marc_norma()
@@ -570,6 +570,73 @@ class Index extends Controller
         // print_r($row);
         $this->view->vistmarco = $row;
         $this->view->render('marco/marc_norma');
+    }
+
+    function select_marco($param = null)
+    {
+        $idframework = $param[0];
+        
+        //  print_r($idframework);
+
+        $this->view->seleccionar = $this->model->select_marco($idframework);
+        $this->view->render('marco/update_marco');
+        
+    }
+
+    function update_marco()
+    {
+
+        $idframework = $_POST['txtID'];
+        $txtNombre = $_POST['txtNombre'];
+        $txtResumen = $_POST['txtResumen'];
+        $txtLink = $_POST['txtLink'];
+        $txtObservacion = $_POST['txtObservacion'];
+
+        if ($this->model->modificar_marco(
+            $data = [
+                'ID'                    => $idframework,   
+                'norma_ley'        => $txtNombre,
+                'resumen'               => $txtResumen,
+                'link'                => $txtLink,
+                'observacion'                => $txtObservacion
+                
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('marco/agregar_marco');
+        }
+    }
+
+    function delete_marco($param = null)
+    {
+        $idframework = $param[0];
+        
+        // print_r($idframework);
+
+        if ( $this->model->delete_marco($idframework)) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Eliminado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al eliminar la informacion
+                </div>';
+                $this->render();
+        }
+        
+        
     }
 
 

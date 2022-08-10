@@ -10,17 +10,28 @@
         foreach ($this->vistmarco as $key) {
             // print_r($key);
         ?>
+            <table class="table table-bordered table-responsive">
 
-            <div class=" card text-white bg-dark mb-3 " style="max-width: 18rem;">
-                <div class="card-header">
-                    <!-- <img src="<?php echo constant('URL') . 'public/images/' ?>" class="card-img-top" alt=""> -->
-                    <h4 class="card-title"><?php echo $key['norma_ley']; ?></h4>
-                    <p class="card-text"><?php echo  $key['resumen']; ?></p>
-                    <p class="card-text"><?php echo  $key['link']; ?></p>
-                    <p class="card-text"><?php echo  $key['observacion']; ?></p>
-                </div>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Resumen</th>
+                        <th scope="col">Link Descarga</th>
+                        <th scope="col">Observacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?php echo $key['norma_ley']; ?></td>
+                        <td><?php echo  $key['resumen']; ?></td>
+                        <td><?php echo  $key['link']; ?></td>
+                        <td><?php echo  $key['observacion']; ?></td>
+                    </tr>
+                </tbody>
 
-            </div>
+            </table>
         <?php
         } ?>
 
