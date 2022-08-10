@@ -226,10 +226,10 @@ class Index extends Controller
 
     function agregar_brecha()
     {
-        $this->view->render('peti/agregar_brecha');
+        $this->view->render('brechas/agregar_brecha');
     }
 
-    function crearbrecha()
+    function crear1()
     {
 
         $txtNombre = $_POST['txtNombre'];
@@ -240,15 +240,15 @@ class Index extends Controller
         $txtstrategy4 = $_POST['txtstrategy4'];
         $txtstrategy5 = $_POST['txtstrategy5'];
 
-        if ($this->model->createbrecha(
+        if ($this->model->create1(
             $data = [
-                'nombre_rupt'        => $txtNombre,
-                'rupturas'               => $txtRuptura,
-                'estrategia1'                => $txtstrategy1,
-                'estrategia2'                => $txtstrategy2,
-                'estrategia3'                => $txtstrategy3,
-                'estrategia4'                => $txtstrategy4,
-                'estrategia5'                => $txtstrategy5,
+                'nombre_ruptura'        => $txtNombre,
+                'ruptura'               => $txtRuptura,
+                'strategy1'                => $txtstrategy1,
+                'strategy2'               => $txtstrategy2,
+                'strategy3'                 => $txtstrategy3,
+                'strategy4'                 => $txtstrategy4,
+                'strategy5'                 => $txtstrategy5
             ]
         )) {
             $this->view->mensaje =
@@ -261,7 +261,7 @@ class Index extends Controller
                 '<div class="alert alert-danger" role="alert">
                     Ocurrio un problema al almacenar la informacion
                 </div>';
-            $this->view->render('peti/agregar_brecha');
+            $this->view->render('brechas/agregar_brecha');
         }
     }
 
@@ -270,7 +270,7 @@ class Index extends Controller
         $row = $this->model->vist();
         // print_r($row);
         $this->view->vist = $row;
-        $this->view->render('peti/list_brech');
+        $this->view->render('brechas/list_brech');
     }
 
     function vista()
@@ -280,15 +280,15 @@ class Index extends Controller
         $this->view->vist = $row;
         $this->view->render('brechas/vista');
     }
-
-    function select_brechas($param = null)
+    
+    function select1($param = null)
     {
         $idbrechasTI = $param[0];
         
         //  print_r($idbrechasTI);
 
-        $this->view->seleccionar = $this->model->select_brechas($idbrechasTI);
-        $this->view->render('peti/update_brechas');
+        $this->view->seleccionar = $this->model->select1($idbrechasTI);
+        $this->view->render('brechas/update_brechas');
         
     }
 
@@ -304,16 +304,16 @@ class Index extends Controller
         $txtstrategy4 = $_POST['txtstrategy4'];
         $txtstrategy5 = $_POST['txtstrategy5'];
 
-        if ($this->model->modificar_brecha(
+        if ($this->model->modificar1(
             $data = [
                 'ID'                    => $idbrechasTI,   
-                'nombre_rupt'        => $txtNombre,
-                'rupturas'               => $txtRuptura,
-                'estrategia1'                => $txtstrategy1,
-                'estrategia2'                => $txtstrategy2,
-                'estrategia3'                => $txtstrategy3,
-                'estrategia4'                => $txtstrategy4,
-                'estrategia5'                => $txtstrategy5
+                'nombre_ruptura'        => $txtNombre,
+                'ruptura'               => $txtRuptura,
+                'strategy1'                => $txtstrategy1,
+                'strategy2'                => $txtstrategy2,
+                'strategy3'                => $txtstrategy3,
+                'strategy4'                => $txtstrategy4,
+                'strategy5'                => $txtstrategy5
             ]
         )) {
             $this->view->mensaje =
@@ -326,17 +326,17 @@ class Index extends Controller
                 '<div class="alert alert-danger" role="alert">
                     Ocurrio un problema al almacenar la informacion
                 </div>';
-            $this->view->render('peti/agregar_brecha');
+            $this->view->render('brechas/agregar_brecha');
         }
     }
 
-    function delete_brechas($param = null)
+    function delete1($param = null)
     {
         $idbrechasTI = $param[0];
         
         // print_r($idbrechasTI);
 
-        if ( $this->model->delete_brechas($idbrechasTI)) {
+        if ( $this->model->delete1($idbrechasTI)) {
             $this->view->mensaje =
                 '<div class="alert alert-info" role="alert">
                     Eliminado con exito
@@ -355,7 +355,7 @@ class Index extends Controller
 
     function agregar_context()
     {
-        $this->view->render('peti/agregar_context');
+        $this->view->render('strategic_context/agregar_context');
     }
 
     function crearcontexto()
@@ -410,7 +410,7 @@ class Index extends Controller
                 '<div class="alert alert-danger" role="alert">
                     Ocurrio un problema al almacenar la informacion
                 </div>';
-            $this->view->render('peti/agregar_context');
+            $this->view->render('strategic_context/agregar_context');
         }
     }
 
@@ -419,7 +419,7 @@ class Index extends Controller
         $row = $this->model->vistlist_context();
         // print_r($row);
         $this->view->vistlist_context = $row;
-        $this->view->render('peti/list_context');
+        $this->view->render('strategic_context/list_context');
     }
 
     function strategic_context()
@@ -437,7 +437,7 @@ class Index extends Controller
         //  print_r($idstrategic_context);
 
         $this->view->seleccionar = $this->model->select_context($idstrategic_context);
-        $this->view->render('peti/update_context');
+        $this->view->render('strategic_context/update_context');
         
     }
 
@@ -495,7 +495,7 @@ class Index extends Controller
                 '<div class="alert alert-danger" role="alert">
                     Ocurrio un problema al almacenar la informacion
                 </div>';
-            $this->view->render('peti/agregar_context');
+            $this->view->render('strategic_context/agregar_context');
         }
     }
 
@@ -518,8 +518,7 @@ class Index extends Controller
                 </div>';
                 $this->render();
         }
-        
-        
+         
     }
 
     function agregar_marco()
@@ -635,9 +634,7 @@ class Index extends Controller
                 </div>';
                 $this->render();
         }
-        
-        
+           
     }
-
 
 }

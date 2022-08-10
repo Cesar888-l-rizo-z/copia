@@ -20,8 +20,8 @@
 
                 <div class="form-group">
                     <label for="txtID">ID:</label>
-                    <input type="text" required readonly class="form-control" value="<?php echo $seleccion['idbrechasTI']; ?>" name="" id="txtID" placeholder="ID">
-                    <input type="hidden" value="<?php echo $seleccion['idbrechasTI']; ?>" name="txtID">
+                    <input type="hidden" required readonly class="form-control" value="<?php echo $seleccion['idbrechasTI']; ?>" name="txtID" id="txtID" placeholder="ID">
+                    <!-- <input type="hidden" value="<?php echo $seleccion['idbrechasTI']; ?>" name="txtID"> -->
                 </div>
 
                 <div class="form-group">

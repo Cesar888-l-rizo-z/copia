@@ -188,15 +188,10 @@ class IndexModel extends Model
         }
     }
 
-    function agregar_brecha()
-    {
-        $this->view->render('peti/agregar_brecha');
-    }
-
-    public function createbrecha($data)
+    public function create1($data)
     {
 
-    //    print_r($data);
+//print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO brechast_i(
@@ -219,16 +214,16 @@ class IndexModel extends Model
                 );'
             );
 
-        
-            $query->bindParam(':nombre_rupturas', $data['nombre_rupt']);
-            $query->bindParam(':ruptura', $data['rupturas']);
-            $query->bindParam(':estrategia1', $data['estrategia1']);
-            $query->bindParam(':estrategia2', $data['estrategia2']);
-            $query->bindParam(':estrategia3', $data['estrategia3']);
-            $query->bindParam(':estrategia4', $data['estrategia4']);
-            $query->bindParam(':estrategia5', $data['estrategia5']);
+            $query->bindParam(':nombre_rupturas', $data['nombre_ruptura']);
+            $query->bindParam(':ruptura', $data['ruptura']);
+            $query->bindParam(':estrategia1', $data['strategy1']);
+            $query->bindParam(':estrategia2', $data['strategy2']);
+            $query->bindParam(':estrategia3', $data['strategy3']);
+            $query->bindParam(':estrategia4', $data['strategy4']);
+            $query->bindParam(':estrategia5', $data['strategy5']);
             $query->execute();
 
+            
 
             return true;
         } catch (PDOException $e) {
@@ -238,7 +233,22 @@ class IndexModel extends Model
         }
     }
 
-    
+    public function list_brech()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM brechast_i');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
 
     public function vist()
     {
@@ -257,7 +267,7 @@ class IndexModel extends Model
         }
     }
 
-    public function select_brechas($idbrechasTI)
+    public function select1($idbrechasTI)
     {
         try {
             $query = $this->db->connect()->prepare('SELECT * FROM brechast_i WHERE idbrechasTI=:idbrechasTI');
@@ -273,7 +283,7 @@ class IndexModel extends Model
         }
     }
 
-    public function modificar_brecha($data)
+    public function modificar1($data)
     {
 
         try {
@@ -287,19 +297,20 @@ class IndexModel extends Model
                     estrategia2 = :estrategia2,
                     estrategia3 = :estrategia3,
                     estrategia4 = :estrategia4,
-                    estrategia5 = :estrategia5,
+                    estrategia5 = :estrategia5
             
                 WHERE
                 idbrechasTI = :idbrechasTI'
             );
 
-            $query->bindParam(':nombre_rupturas', $data['nombre_rupt']);
-            $query->bindParam(':ruptura', $data['rupturas']);
-            $query->bindParam(':estrategia1', $data['estrategia1']);
-            $query->bindParam(':estrategia2', $data['estrategia2']);
-            $query->bindParam(':estrategia3', $data['estrategia3']);
-            $query->bindParam(':estrategia4', $data['estrategia4']);
-            $query->bindParam(':estrategia5', $data['estrategia5']);
+            $query->bindParam(':nombre_rupturas', $data['nombre_ruptura']);
+            $query->bindParam(':ruptura', $data['ruptura']);
+            $query->bindParam(':estrategia1', $data['strategy1']);
+            $query->bindParam(':estrategia2', $data['strategy2']);
+            $query->bindParam(':estrategia3', $data['strategy3']);
+            $query->bindParam(':estrategia4', $data['strategy4']);
+            $query->bindParam(':estrategia5', $data['strategy5']);
+            $query->bindParam(':idbrechasTI', $data['ID']);
             $query->execute();
 
             
@@ -312,10 +323,10 @@ class IndexModel extends Model
         }
     }
 
-    public function delete_brechas($idbrechasTI)
+    public function delete1($idbrechasTI)
     {
         try {
-            $query = $this->db->connect()->prepare('DELETE FROM brechast_i WHERE idbrechasTI=:idbrechasTI');
+            $query = $this->db->connect()->prepare('DELETE FROM brechast_i WHERE idbrechasTI = :idbrechasTI');
             $query->execute([':idbrechasTI' => $idbrechasTI]);
 
 
@@ -407,6 +418,23 @@ class IndexModel extends Model
         }
     }
 
+    public function list_context()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM strategic_context');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
     public function vistlist_context()
     {
 
@@ -487,6 +515,7 @@ class IndexModel extends Model
             $query->bindParam(':No13', $data['No13']);
             $query->bindParam(':No14', $data['No14']);
             $query->bindParam(':No15', $data['No15']);
+            $query->bindParam(':idstrategic_context', $data['ID']);
             $query->execute();
 
             
@@ -555,6 +584,23 @@ class IndexModel extends Model
         }
     }
 
+    public function list_marco()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM regulatory_framework');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
     public function vistmarco()
     {
 
@@ -609,6 +655,7 @@ class IndexModel extends Model
             $query->bindParam(':resumen', $data['resumen']);
             $query->bindParam(':link', $data['link']);
             $query->bindParam(':observacion', $data['observacion']);
+            $query->bindParam(':idframework', $data['ID']);
             $query->execute();
 
             

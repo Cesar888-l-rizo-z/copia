@@ -13,7 +13,7 @@
 
         <div class="card-body">
 
-            <form action="<?php echo constant('URL') ?>index/crearbrecha" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo constant('URL') ?>index/crear1" method="POST" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="txtNombre">Nombre de la ruptura:</label>

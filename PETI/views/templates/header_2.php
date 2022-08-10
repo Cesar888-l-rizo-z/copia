@@ -47,22 +47,22 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_proyect">Lista Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_brecha">Creat_Brech</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_brecha">Agregar_Brecha</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_brech">list_Brech</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_brech">Lista_Brecha</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_context">Create_Context</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_context">Agregar_Contexto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_context">list_Context</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_context">Lista_Contexto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_marco">Crear_Marco</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_marco">Agregar_Marco</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_marco">Lista_MArco</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_marco">Lista_Marco</a>
                     </li>
                 </ul>
             </div>

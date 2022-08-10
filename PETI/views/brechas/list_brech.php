@@ -36,8 +36,8 @@
                     <td class="table-Black 40%"><?php echo $key['estrategia5']; ?></td>
                     
                     <td>
-                        <a class="btn btn-primary" id="btn_<?php echo $key['idbrechasTI']; ?>" href="<?php echo constant('URL') . 'index/select_brechas/' . $key['idbrechasTI']; ?>">Seleccionar</a>
-                        <a class="btn btn-danger" id="btn_<?php echo $key['idbrechasTI']; ?>" href="<?php echo constant('URL') . 'index/delete_brechas/' . $key['idbrechasTI']; ?>">Eliminar</a>
+                        <a class="btn btn-primary" id="btn_<?php echo $key['idbrechasTI']; ?>" href="<?php echo constant('URL') . 'index/select1/' . $key['idbrechasTI']; ?>">Seleccionar</a>
+                        <a class="btn btn-danger" id="btn_<?php echo $key['idbrechasTI']; ?>" href="<?php echo constant('URL') . 'index/delete1/' . $key['idbrechasTI']; ?>">Eliminar</a>
                     </td>
                 </tr>
             <?php
