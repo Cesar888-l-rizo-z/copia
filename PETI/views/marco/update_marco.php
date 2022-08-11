@@ -1,4 +1,4 @@
-<?php require 'views/templates/header.php' ?>
+<?php require 'views/templates/header_marc.php' ?>
 
 <div class="container">
 

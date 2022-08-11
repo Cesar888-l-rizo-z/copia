@@ -14,9 +14,7 @@ class Index extends Controller
     function render()
     {
         $row = $this->model->list();
-
         $this->view->list = $row;
-
         $this->view->render('peti/index');
     }
 
@@ -52,7 +50,6 @@ class Index extends Controller
         $txtStatus = $_POST['txtStatus'];
         $txtuploadedFile = $_FILES['txtuploadedFile'];
         $txtImagen = $_FILES['txtImagen'];
-
 
         $fecha = $this->nameFile();
 
@@ -139,7 +136,6 @@ class Index extends Controller
         $txtuploadedFile = $_FILES['txtuploadedFile'];
         $txtImagen = $_FILES['txtImagen'];
 
-
         $fecha = $this->nameFile();
 
         $nombreArchivo = ($txtImagen != "") ? $fecha . "_" . $_FILES["txtImagen"]["name"] : "imagen.jpg";
@@ -191,9 +187,7 @@ class Index extends Controller
     function delete($param = null)
     {
         $id = $param[0];
-
         // print_r($id);
-
         if ($this->model->delete($id)) {
             $this->view->mensaje =
                 '<div class="alert alert-info" role="alert">
@@ -212,16 +206,6 @@ class Index extends Controller
     function riesgos()
     {
         $this->view->render('defaul/riesgos');
-    }
-
-    function objetivos()
-    {
-        $this->view->render('objetivo/objetivos');
-    }
-
-    function mision()
-    {
-        $this->view->render('mision/mision');
     }
 
     function agregar_brecha()
@@ -283,10 +267,8 @@ class Index extends Controller
     
     function select1($param = null)
     {
-        $idbrechasTI = $param[0];
-        
+        $idbrechasTI = $param[0];       
         //  print_r($idbrechasTI);
-
         $this->view->seleccionar = $this->model->select1($idbrechasTI);
         $this->view->render('brechas/update_brechas');
         
@@ -332,10 +314,8 @@ class Index extends Controller
 
     function delete1($param = null)
     {
-        $idbrechasTI = $param[0];
-        
+        $idbrechasTI = $param[0];       
         // print_r($idbrechasTI);
-
         if ( $this->model->delete1($idbrechasTI)) {
             $this->view->mensaje =
                 '<div class="alert alert-info" role="alert">
@@ -432,10 +412,8 @@ class Index extends Controller
 
     function select_context($param = null)
     {
-        $idstrategic_context = $param[0];
-        
+        $idstrategic_context = $param[0];        
         //  print_r($idstrategic_context);
-
         $this->view->seleccionar = $this->model->select_context($idstrategic_context);
         $this->view->render('strategic_context/update_context');
         
@@ -501,10 +479,8 @@ class Index extends Controller
 
     function delete_context($param = null)
     {
-        $idstrategic_context = $param[0];
-        
+        $idstrategic_context = $param[0];        
         // print_r($idstrategic_context);
-
         if ( $this->model->delete_context($idstrategic_context)) {
             $this->view->mensaje =
                 '<div class="alert alert-info" role="alert">
@@ -573,10 +549,8 @@ class Index extends Controller
 
     function select_marco($param = null)
     {
-        $idframework = $param[0];
-        
+        $idframework = $param[0];       
         //  print_r($idframework);
-
         $this->view->seleccionar = $this->model->select_marco($idframework);
         $this->view->render('marco/update_marco');
         
@@ -617,11 +591,216 @@ class Index extends Controller
 
     function delete_marco($param = null)
     {
-        $idframework = $param[0];
-        
+        $idframework = $param[0];       
         // print_r($idframework);
-
         if ( $this->model->delete_marco($idframework)) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Eliminado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al eliminar la informacion
+                </div>';
+                $this->render();
+        }
+           
+    }
+
+    function add_target()
+    {
+        $this->view->render('objetivo/add_target');
+    }
+
+    function crear_target()
+    {
+
+        $txtNombre = $_POST['txtNombre'];
+        $txtObject = $_POST['txtObject'];
+        if ($this->model->create_target(
+            $data = [
+                'nombre_objectives'        => $txtNombre,
+                'description_objectives'               => $txtObject
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('objetivo/add_target');
+        }
+    }
+
+    function list_target()
+    {
+        $row = $this->model->visttarget();
+        // print_r($row);
+        $this->view->visttarget = $row;
+        $this->view->render('objetivo/list_target');
+    }
+
+    function objetivos()
+    {
+        $row = $this->model->visttarget();
+        // print_r($row);
+        $this->view->visttarget = $row;
+        $this->view->render('objetivo/objetivos');
+    }
+
+    function select_target($param = null)
+    {
+        $idobjectives = $param[0];      
+        //  print_r($idobjectives);
+        $this->view->seleccionar = $this->model->select_target($idobjectives);
+        $this->view->render('objetivo/update_target');
+        
+    }
+
+    function update_target()
+    {
+
+        $idobjectives = $_POST['txtID'];
+        $txtNombre = $_POST['txtNombre'];
+        $txtObject = $_POST['txtObject'];
+
+        if ($this->model->modificar_target(
+            $data = [
+                'ID'                    => $idobjectives,   
+                'nombre_objectives'        => $txtNombre,
+                'description_objectives'               => $txtObject
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('objetivo/add_target');
+        }
+    }
+
+    function delete_target($param = null)
+    {
+        $idobjectives = $param[0];
+        // print_r($idobjectives);
+        if ( $this->model->delete_target($idobjectives)) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Eliminado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al eliminar la informacion
+                </div>';
+                $this->render();
+        }
+           
+    }
+
+    function add_Mission_vision()
+    {
+        $this->view->render('mision/add_Mission_vision');
+    }
+
+    function crear_Mission_vision()
+    {
+
+        $txtNombre = $_POST['txtNombre'];
+        $txtMission_vision = $_POST['txtMission_vision'];
+        if ($this->model->create_Mission_vision(
+            $data = [
+                'nombren_Mission_vision'        => $txtNombre,
+                'description_Mission_vision'               => $txtMission_vision
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('mision/add_Mission_vision');
+        }
+    }
+
+    function list_Mission_vision()
+    {
+        $row = $this->model->vistMission_vision();
+        // print_r($row);
+        $this->view->vistMission_vision = $row;
+        $this->view->render('mision/list_Mission_vision');
+    }
+
+    function Mission_vision()
+    {
+
+        $row = $this->model->vistMission_vision();
+        // print_r($row);
+        $this->view->vistMission_vision = $row;
+        $this->view->render('mision/Mission_vision');
+    }
+
+    function select_Mission_vision($param = null)
+    {
+        $idMission_vision = $param[0];      
+        //  print_r($idMission_vision);
+        $this->view->seleccionar = $this->model->select_Mission_vision($idMission_vision);
+        $this->view->render('mision/update_Mission_vision');
+        
+    }
+
+    function update_Mission_vision()
+    {
+
+        $idMission_vision = $_POST['txtID'];
+        $txtNombre = $_POST['txtNombre'];
+        $txtMission_vision = $_POST['txtMission_vision'];
+
+        if ($this->model->modificar_Mission_vision(
+            $data = [
+                'ID'                    => $idMission_vision,   
+                'nombren_Mission_vision'        => $txtNombre,
+                'description_Mission_vision'               => $txtMission_vision
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('mision/add_Mission_vision');
+        }
+    }
+
+    function delete_Mission_vision($param = null)
+    {
+        $idMission_vision = $param[0];
+        // print_r($idMission_vision);
+        if ( $this->model->delete_Mission_vision($idMission_vision)) {
             $this->view->mensaje =
                 '<div class="alert alert-info" role="alert">
                     Eliminado con exito

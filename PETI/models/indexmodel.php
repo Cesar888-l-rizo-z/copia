@@ -683,4 +683,265 @@ class IndexModel extends Model
         }
     }
 
+    function add_target()
+    {
+        $this->view->render('objetivo/add_target');
+    }
+
+    public function create_target($data)
+    {
+
+    //    print_r($data);
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO objectives(
+                    nombre_objectives,
+                    description_objectives
+                )
+                VALUES(
+                    :nombre_objectives,
+                    :description_objectives
+                );'
+            );
+
+        
+            $query->bindParam(':nombre_objectives', $data['nombre_objectives']);
+            $query->bindParam(':description_objectives', $data['description_objectives']);
+            $query->execute();
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function list_target()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM objectives');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function visttarget()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM objectives');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function select_target($idobjectives)
+    {
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM objectives WHERE idobjectives=:idobjectives');
+            $query->execute([':idobjectives' => $idobjectives]);
+
+            $row = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function modificar_target($data)
+    {
+
+        try {
+            $query = $this->db->connect()->prepare(
+                'UPDATE
+                    objectives
+                SET
+                    nombre_objectives = :nombre_objectives,
+                    description_objectives = :description_objectives
+            
+                WHERE
+                idobjectives = :idobjectives'
+            );
+
+            $query->bindParam(':nombre_objectives', $data['nombre_objectives']);
+            $query->bindParam(':description_objectives', $data['description_objectives']);
+            $query->bindParam(':idobjectives', $data['ID']);
+            $query->execute();
+
+            
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function delete_target($idobjectives)
+    {
+        try {
+            $query = $this->db->connect()->prepare('DELETE FROM objectives WHERE idobjectives=:idobjectives');
+            $query->execute([':idobjectives' => $idobjectives]);
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    function add_Mission_vision()
+    {
+        $this->view->render('mision/add_Mission_vision');
+    }
+
+    public function create_Mission_vision($data)
+    {
+
+    //    print_r($data);
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO mission_vision(
+                    nombren_Mission_vision,
+                    description_Mission_vision
+                )
+                VALUES(
+                    :nombren_Mission_vision,
+                    :description_Mission_vision
+                );'
+            );
+
+        
+            $query->bindParam(':nombren_Mission_vision', $data['nombren_Mission_vision']);
+            $query->bindParam(':description_Mission_vision', $data['description_Mission_vision']);
+            $query->execute();
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function list_Mission_vision()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM mission_vision');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function vistMission_vision()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM mission_vision');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function select_Mission_vision($idMission_vision)
+    {
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM mission_vision WHERE idMission_vision=:idMission_vision');
+            $query->execute([':idMission_vision' => $idMission_vision]);
+
+            $row = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function modificar_Mission_vision($data)
+    {
+
+        try {
+            $query = $this->db->connect()->prepare(
+                'UPDATE
+                    mission_vision
+                SET
+                    nombren_Mission_vision = :nombren_Mission_vision,
+                    description_Mission_vision = :description_Mission_vision
+            
+                WHERE
+                idMission_vision = :idMission_vision'
+            );
+
+            $query->bindParam(':nombren_Mission_vision', $data['nombren_Mission_vision']);
+            $query->bindParam(':description_Mission_vision', $data['description_Mission_vision']);
+            $query->bindParam(':idMission_vision', $data['ID']);
+            $query->execute();
+
+            
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function delete_Mission_vision($idMission_vision)
+    {
+        try {
+            $query = $this->db->connect()->prepare('DELETE FROM mission_vision WHERE idMission_vision=:idMission_vision');
+            $query->execute([':idMission_vision' => $idMission_vision]);
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+
 }

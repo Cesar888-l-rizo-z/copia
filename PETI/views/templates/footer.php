@@ -1,6 +1,7 @@
 <br />
 <br />
 <br />
+</div>
 <footer class="footer" style="position: fixed; bottom: 0px; width: 100%; z-index: 10">
     <div class="footer-copyright text-center py-1" style="background-color: #ccc;">
         <div class="container">

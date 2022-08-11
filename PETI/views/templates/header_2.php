@@ -19,6 +19,7 @@
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
     <title>Ejercicio</title>
 
@@ -47,22 +48,22 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_proyect">Lista Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_brecha">Agregar_Brecha</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_brech">Lista_Brecha</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_context">Agregar_Contexto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_context">Lista_Contexto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_marco">Agregar_Marco</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/add_target">Agregar_Objetivo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_marco">Lista_Marco</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_target">Lista_Objetivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/add_Mission_vision">Agregar_Misión y Visión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_Mission_vision">Lista_Misión y Visión</a>
                     </li>
                 </ul>
             </div>

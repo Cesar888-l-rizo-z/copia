@@ -32,10 +32,10 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_brecha">Agregar_Brecha</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/agregar_marco">Agregar_Marco</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_brech">Lista_Brecha</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_marco">Lista_Marco</a>
                     </li>
                 </ul>
             </div>

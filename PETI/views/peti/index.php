@@ -1,5 +1,7 @@
 <?php require 'views/templates/header_2.php' ?>
 
+<div class="row justify-content-center">
+
 <div class="heaven">
 
     <a href="<?php echo constant('URL') . 'index/riesgos' ?>">
@@ -22,7 +24,7 @@
 
 <div class="heaven3">
 
-    <a href="<?php echo constant('URL') . 'index/mision' ?>">
+    <a href="<?php echo constant('URL') . 'index/Mission_vision' ?>">
         <img src="<?php echo constant('URL') . 'public/images/Piezas/3.png' ?>" />
         <div class="texto3"> MISIÓN <br> Y <br> VISIÓN </div>
     </a>
@@ -31,21 +33,21 @@
 
 <div class="cuadros1">
     <a href="<?php echo constant('URL') . 'index/strategic_context' ?>">
-        <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulIzquierdo1.png' ?>" />
+        <img src="<?php echo constant('URL') . 'public/images/Cuadros/Azul1.png' ?>" />
         <div class="contex"> CONTEXTO ESTRATÉGICO </div>
     </a>
 </div>
 
 <div class="cuadros2">
-    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulIzquierdo2.png' ?>" />
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/Azul2.png' ?>" />
 </div>
 
 <div class="cuadros3">
-    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulDerecho1.png' ?>" />
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/Azul3.png' ?>" />
 </div>
 
 <div class="cuadros4">
-    <img src="<?php echo constant('URL') . 'public/images/Cuadros/AzulDerecho2.png' ?>" />
+    <img src="<?php echo constant('URL') . 'public/images/Cuadros/Azul4.png' ?>" />
 </div>
 
 <div class="barra">
@@ -137,5 +139,5 @@ for ($i = 4; $i <= 9; $i++) {
 }
 ?>
 
-
+</div>
 <?php require 'views/templates/footer.php' ?>

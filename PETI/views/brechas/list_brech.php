@@ -1,4 +1,4 @@
-<?php require 'views/templates/header_2.php' ?>
+<?php require 'views/templates/header.php' ?>
 
 <div class="container-fluid">
 

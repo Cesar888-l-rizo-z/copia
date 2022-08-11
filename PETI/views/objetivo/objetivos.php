@@ -1,26 +1,27 @@
-<!DOCTYPE html>
-<html>
+<?php require 'views/templates/header_2.php' ?>
 
-<head>
-  <style>
-    div.a {
-      text-align: center;
-    }
-  </style>
-</head>
+<div class="container">
 
-<body>
-
-  <div align="center">
-    <h1> OBETIVOS </h1>
-  </div>
+    <div class="row justify-content-center">
 
 
-  <div class="a">
-    <h2>OBJETIVOS:</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.</p>
-  </div>
 
-</body>
+        <?php
+        foreach ($this->visttarget as $key) {
+            // print_r($key);
+        ?>
 
-</html>
+            <div class=" card text-white bg-dark mb-3 " style="max-width: 18rem;">
+                <div class="card-header">
+                    <h4 class="card-title"><?php echo $key['nombre_objectives']; ?></h4>
+                    <p class="card-text"><?php echo  $key['description_objectives']; ?></p>
+                </div>
+
+            </div>
+        <?php
+        } ?>
+
+    </div>
+</div>
+
+<?php require 'views/templates/footer.php' ?>
