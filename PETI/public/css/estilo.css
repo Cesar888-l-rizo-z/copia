@@ -398,6 +398,30 @@ a {
   /* opacity: 0.5; */
 }
 
+.situacion1 {
+  position: absolute;
+  top: 48px;
+  left: 21px;
+  font-family:"Times New Roman";
+  font-size: 18px;
+  -webkit-text-stroke-width: thick;
+  color: rgb(0, 0, 0);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.cuadros4 {
+  transition: transform 0.2s;
+}
+
+.cuadros4:hover {
+  transform: scale(1.5);
+  z-index: 99999;
+}
+
 .barra {
   position: absolute;
   overflow: hidden;

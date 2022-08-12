@@ -619,10 +619,29 @@ class Index extends Controller
 
         $txtNombre = $_POST['txtNombre'];
         $txtObject = $_POST['txtObject'];
+        $txtObject2 = $_POST['txtObject2'];
+        $txtObject3 = $_POST['txtObject3'];
+        $txtObject4 = $_POST['txtObject4'];
+        $txtObject5 = $_POST['txtObject5'];
+        $txtObject6 = $_POST['txtObject6'];
+        $txtObject7 = $_POST['txtObject7'];
+        $txtObject8 = $_POST['txtObject8'];
+        $txtObject9 = $_POST['txtObject9'];
+        $txtObject10 = $_POST['txtObject10'];
         if ($this->model->create_target(
             $data = [
-                'nombre_objectives'        => $txtNombre,
-                'description_objectives'               => $txtObject
+                'nombre_objectives'                     => $txtNombre,
+                'description_objectives'               => $txtObject,
+                'description_objectives2'               => $txtObject2,
+                'description_objectives3'               => $txtObject3,
+                'description_objectives4'               => $txtObject4,
+                'description_objectives5'               => $txtObject5,
+                'description_objectives6'               => $txtObject6,
+                'description_objectives7'               => $txtObject7,
+                'description_objectives8'               => $txtObject8,
+                'description_objectives9'               => $txtObject9,
+                'description_objectives10'               => $txtObject10
+
             ]
         )) {
             $this->view->mensaje =
@@ -670,12 +689,30 @@ class Index extends Controller
         $idobjectives = $_POST['txtID'];
         $txtNombre = $_POST['txtNombre'];
         $txtObject = $_POST['txtObject'];
+        $txtObject2 = $_POST['txtObject2'];
+        $txtObject3 = $_POST['txtObject3'];
+        $txtObject4 = $_POST['txtObject4'];
+        $txtObject5 = $_POST['txtObject5'];
+        $txtObject6 = $_POST['txtObject6'];
+        $txtObject7 = $_POST['txtObject7'];
+        $txtObject8 = $_POST['txtObject8'];
+        $txtObject9 = $_POST['txtObject9'];
+        $txtObject10 = $_POST['txtObject10'];
 
         if ($this->model->modificar_target(
             $data = [
                 'ID'                    => $idobjectives,   
                 'nombre_objectives'        => $txtNombre,
-                'description_objectives'               => $txtObject
+                'description_objectives'               => $txtObject,
+                'description_objectives2'               => $txtObject2,
+                'description_objectives3'               => $txtObject3,
+                'description_objectives4'               => $txtObject4,
+                'description_objectives5'               => $txtObject5,
+                'description_objectives6'               => $txtObject6,
+                'description_objectives7'               => $txtObject7,
+                'description_objectives8'               => $txtObject8,
+                'description_objectives9'               => $txtObject9,
+                'description_objectives10'               => $txtObject10
             ]
         )) {
             $this->view->mensaje =

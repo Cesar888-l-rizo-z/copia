@@ -30,7 +30,52 @@
 
                 <div class="form-group">
                     <label for="txtObject">Descripción Del Objetivo:</label>
-                    <textarea required class="form-control" value="<?php echo $seleccion['description_objectives']; ?>" name="txtObject" id="txtObject" placeholder="Resumen" rows="3"></textarea>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives']; ?>" name="txtObject" id="txtObject" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject2">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives2']; ?>" name="txtObject2" id="txtObject2" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject3">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives3']; ?>" name="txtObject3" id="txtObject3" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject4">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives4']; ?>" name="txtObject4" id="txtObject4" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject5">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives5']; ?>" name="txtObject5" id="txtObject5" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject6">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives6']; ?>" name="txtObject6" id="txtObject6" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject7">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives7']; ?>" name="txtObject7" id="txtObject7" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject8">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives8']; ?>" name="txtObject8" id="txtObject8" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject9">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives9']; ?>" name="txtObject9" id="txtObject9" placeholder="Resumen" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtObject10">Descripción Del Objetivo:</label>
+                    <textarea class="form-control" value="<?php echo $seleccion['description_objectives10']; ?>" name="txtObject10" id="txtObject10" placeholder="Resumen" rows="3"></textarea>
                 </div>
 
                 <div>

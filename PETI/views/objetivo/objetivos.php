@@ -11,10 +11,21 @@
             // print_r($key);
         ?>
 
-            <div class=" card text-white bg-dark mb-3 " style="max-width: 18rem;">
-                <div class="card-header">
+            <div class=" text-center" style="width: 60rem;">
+                <div class="card-body">
                     <h4 class="card-title"><?php echo $key['nombre_objectives']; ?></h4>
+                    <br/>
                     <p class="card-text"><?php echo  $key['description_objectives']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives2']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives3']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives4']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives5']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives6']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives7']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives8']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives9']; ?></p>
+                    <p class="card-text"><?php echo  $key['description_objectives10']; ?></p>
+
                 </div>
 
             </div>

@@ -34,7 +34,7 @@ class IndexModel extends Model
 
         $img = $data['img']['name'];
         $docs = $data['docs']['name'];
-//print_r($data);
+        //print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO webpeti(
@@ -69,7 +69,7 @@ class IndexModel extends Model
             $query->bindParam(':Imagen', $img);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -114,7 +114,7 @@ class IndexModel extends Model
     }
 
     public function select($id)
-    
+
     {
         try {
             $query = $this->db->connect()->prepare('SELECT * FROM webpeti WHERE id=:id');
@@ -128,13 +128,13 @@ class IndexModel extends Model
             return [];
         }
     }
-    
+
     public function modificar($data)
     {
 
         $img = $data['img']['name'];
         $docs = $data['docs']['name'];
-//print_r($data);
+        //print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'UPDATE
@@ -163,7 +163,7 @@ class IndexModel extends Model
             $query->bindParam(':id', $data['ID']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -191,7 +191,7 @@ class IndexModel extends Model
     public function create1($data)
     {
 
-//print_r($data);
+        //print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO brechast_i(
@@ -223,7 +223,7 @@ class IndexModel extends Model
             $query->bindParam(':estrategia5', $data['strategy5']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -313,7 +313,7 @@ class IndexModel extends Model
             $query->bindParam(':idbrechasTI', $data['ID']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -346,7 +346,7 @@ class IndexModel extends Model
     public function createcontexto($data)
     {
 
-    //    print_r($data);
+        //    print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO strategic_context(
@@ -389,7 +389,7 @@ class IndexModel extends Model
                 );'
             );
 
-        
+
             $query->bindParam(':nombre_context', $data['nombre_context']);
             $query->bindParam(':descripcion', $data['descripcion']);
             $query->bindParam(':No1', $data['No1']);
@@ -518,7 +518,7 @@ class IndexModel extends Model
             $query->bindParam(':idstrategic_context', $data['ID']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -551,7 +551,7 @@ class IndexModel extends Model
     public function createmarco($data)
     {
 
-    //    print_r($data);
+        //    print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO regulatory_framework(
@@ -568,7 +568,7 @@ class IndexModel extends Model
                 );'
             );
 
-        
+
             $query->bindParam(':norma_ley', $data['norma_ley']);
             $query->bindParam(':resumen', $data['resumen']);
             $query->bindParam(':link', $data['link']);
@@ -658,7 +658,7 @@ class IndexModel extends Model
             $query->bindParam(':idframework', $data['ID']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -691,22 +691,49 @@ class IndexModel extends Model
     public function create_target($data)
     {
 
-    //    print_r($data);
+        //    print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO objectives(
                     nombre_objectives,
-                    description_objectives
+                    description_objectives,
+                    description_objectives2,
+                    description_objectives3,
+                    description_objectives4,
+                    description_objectives5,
+                    description_objectives6,
+                    description_objectives7,
+                    description_objectives8,
+                    description_objectives9,
+                    description_objectives10
                 )
                 VALUES(
                     :nombre_objectives,
-                    :description_objectives
+                    :description_objectives,
+                    :description_objectives2,
+                    :description_objectives3,
+                    :description_objectives4,
+                    :description_objectives5,
+                    :description_objectives6,
+                    :description_objectives7,
+                    :description_objectives8,
+                    :description_objectives9,
+                    :description_objectives10
                 );'
             );
 
-        
+
             $query->bindParam(':nombre_objectives', $data['nombre_objectives']);
             $query->bindParam(':description_objectives', $data['description_objectives']);
+            $query->bindParam(':description_objectives2', $data['description_objectives2']);
+            $query->bindParam(':description_objectives3', $data['description_objectives3']);
+            $query->bindParam(':description_objectives4', $data['description_objectives4']);
+            $query->bindParam(':description_objectives5', $data['description_objectives5']);
+            $query->bindParam(':description_objectives6', $data['description_objectives6']);
+            $query->bindParam(':description_objectives7', $data['description_objectives7']);
+            $query->bindParam(':description_objectives8', $data['description_objectives8']);
+            $query->bindParam(':description_objectives9', $data['description_objectives9']);
+            $query->bindParam(':description_objectives10', $data['description_objectives10']);
             $query->execute();
 
 
@@ -777,7 +804,16 @@ class IndexModel extends Model
                     objectives
                 SET
                     nombre_objectives = :nombre_objectives,
-                    description_objectives = :description_objectives
+                    description_objectives = :description_objectives,
+                    description_objectives2 = :description_objectives2,
+                    description_objectives3 = :description_objectives3,
+                    description_objectives4 = :description_objectives4,
+                    description_objectives5 = :description_objectives5,
+                    description_objectives6 = :description_objectives6,
+                    description_objectives7 = :description_objectives7,
+                    description_objectives8 = :description_objectives8,
+                    description_objectives9 = :description_objectives9,
+                    description_objectives10 = :description_objectives10
             
                 WHERE
                 idobjectives = :idobjectives'
@@ -785,10 +821,19 @@ class IndexModel extends Model
 
             $query->bindParam(':nombre_objectives', $data['nombre_objectives']);
             $query->bindParam(':description_objectives', $data['description_objectives']);
+            $query->bindParam(':description_objectives2', $data['description_objectives2']);
+            $query->bindParam(':description_objectives3', $data['description_objectives3']);
+            $query->bindParam(':description_objectives4', $data['description_objectives4']);
+            $query->bindParam(':description_objectives5', $data['description_objectives5']);
+            $query->bindParam(':description_objectives6', $data['description_objectives6']);
+            $query->bindParam(':description_objectives7', $data['description_objectives7']);
+            $query->bindParam(':description_objectives8', $data['description_objectives8']);
+            $query->bindParam(':description_objectives9', $data['description_objectives9']);
+            $query->bindParam(':description_objectives10', $data['description_objectives10']);
             $query->bindParam(':idobjectives', $data['ID']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -821,7 +866,7 @@ class IndexModel extends Model
     public function create_Mission_vision($data)
     {
 
-    //    print_r($data);
+        //    print_r($data);
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO mission_vision(
@@ -834,7 +879,7 @@ class IndexModel extends Model
                 );'
             );
 
-        
+
             $query->bindParam(':nombren_Mission_vision', $data['nombren_Mission_vision']);
             $query->bindParam(':description_Mission_vision', $data['description_Mission_vision']);
             $query->execute();
@@ -918,7 +963,7 @@ class IndexModel extends Model
             $query->bindParam(':idMission_vision', $data['ID']);
             $query->execute();
 
-            
+
 
             return true;
         } catch (PDOException $e) {
@@ -942,6 +987,4 @@ class IndexModel extends Model
             return false;
         }
     }
-
-
 }
