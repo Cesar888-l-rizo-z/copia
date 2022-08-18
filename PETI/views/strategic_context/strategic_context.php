@@ -11,7 +11,7 @@
             // print_r($key);
         ?>
 
-<div class=" card text-white bg-dark mb-3 " style="max-width: 18rem;">
+            <div class=" card text-white bg-dark mb-3 " style="max-width: 18rem;">
                 <div class="card-body">
                     <!-- <img src="<?php echo constant('URL') . 'public/images/' ?>" class="card-img-top" alt=""> -->
                     <h4 class="card-title"><?php echo $key['nombre_context']; ?></h4>

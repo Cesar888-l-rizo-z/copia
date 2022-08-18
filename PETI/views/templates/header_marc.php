@@ -37,6 +37,18 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_marco">Lista_Marco</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/add_target">Agregar_Objetivo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_target">Lista_Objetivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/add_Mission_vision">Agregar_Misión y Visión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_Mission_vision">Lista_Misión y Visión</a>
+                    </li>                    
                 </ul>
             </div>
         </div>

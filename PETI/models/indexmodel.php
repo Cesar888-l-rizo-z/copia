@@ -987,4 +987,159 @@ class IndexModel extends Model
             return false;
         }
     }
+
+    function AddIdeal_situation()
+    {
+        $this->view->render('situation/AddIdeal_situation');
+    }
+
+    public function create_situation($data)
+    {
+
+        //    print_r($data);
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO ideal_situation(
+                    indicator,
+                    value_target,
+                    value_initial,
+                    initial_value_date,
+                    target_value_date,
+                    descript,
+                    observation
+                )
+                VALUES(
+                    :indicator,
+                    :value_target,
+                    :value_initial,
+                    :initial_value_date,
+                    :target_value_date,
+                    :descript,
+                    :observation
+                    
+                );'
+            );
+
+            $query->bindParam(':indicator', $data['indicator']);
+            $query->bindParam(':value_target', $data['value_target']);
+            $query->bindParam(':value_initial', $data['value_initial']);
+            $query->bindParam(':initial_value_date', $data['initial_value_date']);
+            $query->bindParam(':target_value_date', $data['target_value_date']);
+            $query->bindParam(':descript', $data['descript']);
+            $query->bindParam(':observation', $data['observation']);
+            $query->execute();
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function list_Ideal_situation()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM ideal_situation');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function vistsituation()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM ideal_situation');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function select_situation($id_Ideal_situation)
+    {
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM ideal_situation WHERE id_Ideal_situation=:id_Ideal_situation');
+            $query->execute([':id_Ideal_situation' => $id_Ideal_situation]);
+
+            $row = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
+        }
+    }
+
+    public function modificar_situation($data)
+    {
+
+        try {
+            $query = $this->db->connect()->prepare(
+                'UPDATE
+                    ideal_situation
+                SET
+                    indicator = :indicator,
+                    value_target = :value_target,
+                    value_initial = :value_initial,
+                    initial_value_date = :initial_value_date,
+                    target_value_date = :target_value_date,
+                    descript = :descript,
+                    observation = :observation
+            
+                WHERE
+                id_Ideal_situation = :id_Ideal_situation'
+            );
+
+            $query->bindParam(':indicator', $data['indicator']);
+            $query->bindParam(':value_target', $data['value_target']);
+            $query->bindParam(':value_initial', $data['value_initial']);
+            $query->bindParam(':initial_value_date', $data['initial_value_date']);
+            $query->bindParam(':target_value_date', $data['target_value_date']);
+            $query->bindParam(':descript', $data['descript']);
+            $query->bindParam(':observation', $data['observation']);
+            $query->bindParam(':id_Ideal_situation', $data['ID']);
+            $query->execute();
+
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
+
+    public function delete_situation($id_Ideal_situation)
+    {
+        try {
+            $query = $this->db->connect()->prepare('DELETE FROM ideal_situation WHERE id_Ideal_situation=:id_Ideal_situation');
+            $query->execute([':id_Ideal_situation' => $id_Ideal_situation]);
+
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
 }

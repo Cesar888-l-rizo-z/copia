@@ -853,4 +853,131 @@ class Index extends Controller
            
     }
 
+    function AddIdeal_situation()
+    {
+        $this->view->render('situation/AddIdeal_situation');
+    }
+
+    function crear_situation()
+    {
+
+        $txtindicador = $_POST['txtindicador'];
+        $txtobject = $_POST['txtobject'];
+        $txtvalueini = $_POST['txtvalueini'];
+        $txtFecha_initial = $_POST['txtFecha_initial'];
+        $txtFecha_value = $_POST['txtFecha_value'];
+        $txtdescription = $_POST['txtdescription'];
+        $txtobservation = $_POST['txtobservation'];
+        
+        if ($this->model->create_situation(
+            $data = [
+                'indicator'                     => $txtindicador,
+                'value_target'               => $txtobject,
+                'value_initial'               => $txtvalueini,
+                'initial_value_date'               => $txtFecha_initial,
+                'target_value_date'               => $txtFecha_value,
+                'descript'               => $txtdescription,
+                'observation'               => $txtobservation
+
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('situation/AddIdeal_situation');
+        }
+    }
+
+    function list_Ideal_situation()
+    {
+        $row = $this->model->vistsituation();
+        // print_r($row);
+        $this->view->vistsituation = $row;
+        $this->view->render('situation/list_Ideal_situation');
+    }
+
+    function Ideal_situation()
+    {
+        $row = $this->model->vistsituation();
+        // print_r($row);
+        $this->view->vistsituation = $row;
+        $this->view->render('situation/Ideal_situation');
+    }
+
+    function select_situation($param = null)
+    {
+        $id_Ideal_situation = $param[0];      
+        //  print_r($id_Ideal_situation);
+        $this->view->seleccionar = $this->model->select_situation($id_Ideal_situation);
+        $this->view->render('situation/update_Ideal_situation');
+        
+    }
+
+    function update_Ideal_situation()
+    {
+
+        $id_Ideal_situation = $_POST['txtID'];
+        $txtindicador = $_POST['txtindicador'];
+        $txtobject = $_POST['txtobject'];
+        $txtvalueini = $_POST['txtvalueini'];
+        $txtFecha_initial = $_POST['txtFecha_initial'];
+        $txtFecha_value = $_POST['txtFecha_value'];
+        $txtdescription = $_POST['txtdescription'];
+        $txtobservation = $_POST['txtobservation'];
+        
+
+        if ($this->model->modificar_situation(
+            $data = [
+                'ID'                    => $id_Ideal_situation,   
+                'indicator'        => $txtindicador,
+                'value_target'               => $txtobject,
+                'value_initial'               => $txtvalueini,
+                'initial_value_date'               => $txtFecha_initial,
+                'target_value_date'               => $txtFecha_value,
+                'descript'               => $txtdescription,
+                'observation'               => $txtobservation
+                
+            ]
+        )) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Creado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al almacenar la informacion
+                </div>';
+            $this->view->render('situation/AddIdeal_situation');
+        }
+    }
+
+    function delete_situation($param = null)
+    {
+        $id_Ideal_situation = $param[0];
+        // print_r($id_Ideal_situation);
+        if ( $this->model->delete_situation($id_Ideal_situation)) {
+            $this->view->mensaje =
+                '<div class="alert alert-info" role="alert">
+                    Eliminado con exito
+                </div>';
+            $this->render();
+        } else {
+            $this->view->mensaje =
+                '<div class="alert alert-danger" role="alert">
+                    Ocurrio un problema al eliminar la informacion
+                </div>';
+                $this->render();
+        }
+           
+    }
+
 }

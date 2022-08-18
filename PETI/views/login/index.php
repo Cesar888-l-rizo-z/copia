@@ -1,107 +1,314 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Styles -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/bootstrap.min.css" />
-	<!-- Normalize V8.0.1 -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/normalize.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta charset="utf-8" />
+	<title>Login - Sistema de Usuarios</title>
 
-	<!-- Bootstrap V4.3 -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/bootstrap.min.css">
+	<meta name="description" content="User login page" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-	<!-- Bootstrap Material Design V4.0 -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/bootstrap-material-design.min.css">
+	<!-- bootstrap & fontawesome -->
 
-	<!-- Font Awesome V5.9.0 -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/all.css">
+	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/bootstrap.min.css" />
+	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-	<!-- Sweet Alerts V8.13.0 CSS file -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/sweetalert2.min.css">
+	<!-- text fonts -->
+	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/fonts.googleapis.com.css" />
 
-	<!-- Sweet Alert V8.13.0 JS file -->
-	<script src="<?php echo constant('URL'); ?>public/js/sweetalert2.min.js"></script>
+	<!-- ace styles -->
+	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/ace.min.css" />
 
-	<!-- jQuery Custom Content Scroller V3.1.5 -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/jquery.mCustomScrollbar.css">
+	<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" />
+		<![endif]-->
+	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/ace-rtl.min.css" />
 
-	<!-- General Styles -->
-	<link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/style.css">
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
 
+	<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
-	<!-- JS -->
-	<script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/bootstrap.min.js"></script>
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<title>Ejercicio</title>
-
+	<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
 </head>
 
-<body>
+<body class="login-layout">
+	<div class="main-container">
+		<div class="main-content">
+			<div class="row">
+				<div class="col-sm-10 col-sm-offset-1">
+					<div class="login-container">
+						<div class="center">
+							<h1>
+								<i class="ace-icon fa fa-leaf green"></i>
+								<span class="red">Inicia sesión con tu cuenta </span>
+							</h1>
+						</div>
 
-	<?php if (isset($mensaje)) { ?>
+						<div class="space-6"></div>
 
-		<div class="alert alert-danger" role="alert">
-			<?php echo $mensaje; ?>
-		</div>
-	<?php } ?>
+						<div class="position-relative">
+							<div id="login-box" class="login-box visible widget-box no-border">
+								<div class="widget-body">
+									<div class="widget-main">
+										<h4 class="header blue lighter bigger">
+											<i class="ace-icon fa fa-coffee green"></i>
+											Ingresa tu Informacion
+										</h4>
 
-	<div class="login-container">
-		<div class="login-content">
-			<p class="text-center">
-				<i class="fas fa-user-circle fa-5x"></i>
-			</p>
-			<p class="text-center">
-				Inicia sesión con tu cuenta
-			</p>
-			<form action="<?php echo constant('URL') ?>login/ingresar" method="POST" autocomplete="off">
-				<div class="form-group">
-					<label for="UserName" class="bmd-label-floating"><i class="fas fa-user-secret"></i> &nbsp; Usuario</label>
-					<input type="text" class="form-control" id="UserName" name="usuario" pattern="[a-zA-Z0-9]{1,35}" maxlength="35" required="">
-				</div>
-				<div class="form-group">
-					<label for="UserPassword" class="bmd-label-floating"><i class="fas fa-key"></i> &nbsp; Contraseña</label>
-					<input type="password" class="form-control" id="UserPassword" name="clave" pattern="[a-zA-Z0-9$@.-]{7,100}" maxlength="100" required="">
-				</div>
-				<button type="submit" class="btn-login text-center">LOG IN</button>
-			</form>
-		</div>
-	</div>
+										<div class="space-6"></div>
 
-	<footer class="footer" style="position: fixed;
-    bottom: 0px;
-    width: 100%;
-    z-index: 10">
-		<div class="footer-copyright text-center py-1" style="background-color: #ccc;">
-			<div class="container">
-				<div class="center" style="line-height: 15px;">
-					<small>
-						<small>
-							Señor usuario: Recuerde, si desea realizar alguna sugerencia, por favor tramitarla a través del
-							correo tic@si18.com.co
+										<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST">
+											<fieldset>
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="text" class="form-control" name="user" placeholder="Usuario" />
+														<i class="ace-icon fa fa-user"></i>
+													</span>
+												</label>
 
-						</small>
-					</small>
-				</div>
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="password" name="pass" class="form-control" placeholder="Contraseña" />
+														<i class="ace-icon fa fa-lock"></i>
+													</span>
+												</label>
 
-				<b>
-					© 2020 Copyright:<a href="https://www.si18.com.co/"> www.si18.com.co</a>
-				</b>
-			</div>
-		</div>
+												<div class="space"></div>
 
-		<script>
-			window.onload = function() {
-				history.replaceState("", "", "<?php echo constant('URL'); ?>index");
-			}
-		</script>
+												<div class="clearfix">
+													<label class="inline">
+														<input type="checkbox" class="ace" />
+														<span class="lbl"> Recordarme</span>
+													</label>
 
-	</footer>
+													<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+														<i class="ace-icon fa fa-key"></i>
+														<span class="bigger-110">Ingresar</span>
+													</button>
 
+
+												</div>
+
+												<div class="space-4"></div>
+											</fieldset>
+										</form>
+
+									</div><!-- /.widget-main -->
+
+									<div class="toolbar clearfix">
+										<div>
+											<a href="#" data-target="#forgot-box" class="forgot-password-link">
+												<i class="ace-icon fa fa-arrow-left"></i>
+												Olvide mi contraseña
+											</a>
+										</div>
+
+										<div>
+											<a href="#" data-target="#signup-box" class="user-signup-link">
+												Nuevo Registro
+												<i class="ace-icon fa fa-arrow-right"></i>
+											</a>
+										</div>
+									</div>
+								</div><!-- /.widget-body -->
+							</div><!-- /.login-box -->
+
+							<div id="forgot-box" class="forgot-box widget-box no-border">
+								<div class="widget-body">
+									<div class="widget-main">
+										<h4 class="header red lighter bigger">
+											<i class="ace-icon fa fa-key"></i>
+											Recuperar Contraseña
+										</h4>
+
+										<div class="space-6"></div>
+										<p>
+											Ungresa tu correo electronico para recibir las instrucciones
+										</p>
+
+										<form>
+											<fieldset>
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="email" class="form-control" placeholder="Email" />
+														<i class="ace-icon fa fa-envelope"></i>
+													</span>
+												</label>
+												<div class="clearfix">
+													<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+														<i class="ace-icon fa fa-lightbulb-o"></i>
+														<span class="bigger-110">Enviar</span>
+													</button>
+												</div>
+											</fieldset>
+										</form>
+									</div><!-- /.widget-main -->
+
+									<div class="toolbar center">
+										<a href="#" data-target="#login-box" class="back-to-login-link">
+											Regresar al Login
+											<i class="ace-icon fa fa-arrow-right"></i>
+										</a>
+									</div>
+								</div><!-- /.widget-body -->
+							</div><!-- /.forgot-box -->
+
+							<div id="signup-box" class="signup-box widget-box no-border">
+								<div class="widget-body">
+									<div class="widget-main">
+										<h4 class="header green lighter bigger">
+											<i class="ace-icon fa fa-users blue"></i>
+											Registro de Nuevos Usuarios
+										</h4>
+										<div class="space-6"></div>
+										<p>Ingresa los datos solicitados acontinuacion: </p>
+										<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST">
+											<fieldset>
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="text" class="form-control" name="nombre" placeholder="Nombre Completo" required />
+														<i class="ace-icon fa fa-users"></i>
+													</span>
+												</label>
+
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="email" class="form-control" name="correo" placeholder="Email" required />
+														<i class="ace-icon fa fa-envelope"></i>
+													</span>
+												</label>
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="text" class="form-control" name="user" placeholder="Usuario" required />
+														<i class="ace-icon fa fa-user"></i>
+													</span>
+												</label>
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="password" class="form-control" name="pass" placeholder="Password" required />
+														<i class="ace-icon fa fa-lock"></i>
+													</span>
+												</label>
+
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="password" class="form-control" name="passr" placeholder="Repetir password" />
+														<i class="ace-icon fa fa-retweet"></i>
+													</span>
+												</label>
+
+												<label class="block">
+													<input type="checkbox" class="ace" />
+													<span class="lbl">
+														Acepto los
+														<a href="#">Terminos de Uso</a>
+													</span>
+												</label>
+												<div class="space-24"></div>
+												<div class="clearfix">
+													<button type="reset" class="width-30 pull-left btn btn-sm">
+														<i class="ace-icon fa fa-refresh"></i>
+														<span class="bigger-110">Reset</span>
+													</button>
+
+													<button type="submit" name="registrar" class="width-65 pull-right btn btn-sm btn-success">
+														<span class="bigger-110">Registrar</span>
+														<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+													</button>
+												</div>
+											</fieldset>
+										</form>
+									</div>
+
+									<div class="toolbar center">
+										<a href="#" data-target="#login-box" class="back-to-login-link">
+											<i class="ace-icon fa fa-arrow-left"></i>
+											Regresar al Login
+										</a>
+									</div>
+								</div><!-- /.widget-body -->
+							</div><!-- /.signup-box -->
+						</div><!-- /.position-relative -->
+
+						<div class="navbar-fixed-top align-right">
+							<br />
+							&nbsp;
+							<a id="btn-login-dark" href="#">Oscuro</a>
+							&nbsp;
+							<span class="blue">/</span>
+							&nbsp;
+							<a id="btn-login-blur" href="#">Azul</a>
+							&nbsp;
+							<span class="blue">/</span>
+							&nbsp;
+							<a id="btn-login-light" href="#">Claro</a>
+							&nbsp; &nbsp; &nbsp;
+						</div>
+					</div>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.main-content -->
+	</div><!-- /.main-container -->
+
+	<!-- basic scripts -->
+
+	<!--[if !IE]> -->
+	<script src="<?php echo constant('URL'); ?>public/js/jquery-2.1.4.min.js"></script>
+
+	<!-- <![endif]-->
+
+	<!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+	<script type="text/javascript">
+		if ('ontouchstart' in document.documentElement) document.write("<script src='<?php echo constant('URL'); ?>public/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+	</script>
+
+	<!-- inline scripts related to this page -->
+	<script type="text/javascript">
+		jQuery(function($) {
+			$(document).on('click', '.toolbar a[data-target]', function(e) {
+				e.preventDefault();
+				var target = $(this).data('target');
+				$('.widget-box.visible').removeClass('visible'); //hide others
+				$(target).addClass('visible'); //show target
+			});
+		});
+
+
+
+		//you don't need this, just used for changing background
+		jQuery(function($) {
+			$('#btn-login-dark').on('click', function(e) {
+				$('body').attr('class', 'login-layout');
+				$('#id-text2').attr('class', 'white');
+				$('#id-company-text').attr('class', 'blue');
+
+				e.preventDefault();
+			});
+			$('#btn-login-light').on('click', function(e) {
+				$('body').attr('class', 'login-layout light-login');
+				$('#id-text2').attr('class', 'grey');
+				$('#id-company-text').attr('class', 'blue');
+
+				e.preventDefault();
+			});
+			$('#btn-login-blur').on('click', function(e) {
+				$('body').attr('class', 'login-layout blur-login');
+				$('#id-text2').attr('class', 'white');
+				$('#id-company-text').attr('class', 'light-blue');
+
+				e.preventDefault();
+			});
+
+		});
+	</script>
 </body>
 
 </html>
