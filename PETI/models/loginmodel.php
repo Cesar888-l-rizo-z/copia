@@ -16,7 +16,7 @@ class LoginModel extends Model
     {
 
         try {
-            $query = $this->db->connect()->prepare('SELECT * FROM webpeti');
+            $query = $this->db->connect()->prepare('SELECT * FROM loginpeti');
             $query->execute([]);
 
             $row = $query->fetchAll();

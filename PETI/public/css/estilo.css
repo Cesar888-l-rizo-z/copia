@@ -30,6 +30,7 @@ a {
   margin: 10px;
   top: 141px; /* ajustar los valores para mover la imagen */
   left: 399px;
+  align-content:center;
 
   /* opacity: 0.5; */
 }
