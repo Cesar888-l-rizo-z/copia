@@ -1,44 +1,78 @@
 <?php
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-
-	$adServer = "#";
-
-	$ldap = ldap_connect($adServer);
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
-	$ldaprdn = 'sena' . "\\" . $username;
-
-	ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-	ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
-
-	$bind = @ldap_bind($ldap, $ldaprdn, $password);
-
-
-	if ($bind) {
-		$filter = "(sAMAccountName=$username)";
-		$result = ldap_search($ldap, "dc=sena,dc=com", $filter);
-		$ldap_sort($ldap, $result, "389");
-		$info = ldap_get_entries($ldap, $result);
-		for ($i = 0; $i < $info["count"]; $i++) {
-			if ($info['count'] > 1)
-				break;
-			echo "<p>You are accessing <strong> " . $info[$i]["sn"][0] . ", " . $info[$i]["givenname"][0] . "</strong><br /> (" . $info[$i]["samaccountname"][0] . ")</p>\n";
-			echo '<pre>';
-			var_dump($info);
-			echo '</pre>';
-			$userDn = $info[$i]["distinguishedname"][0];
-		}
-		@ldap_close($ldap);
-	} else {
-		$msg = "Invalid email address / password";
-		echo $msg;
+$ldap = ldap_connect( '192.168.0.195' );
+if ( $ldap ) {
+	$bind = ldap_bind( $ldap, 'CN=Administrator,CN=Users,DC=si18,DC=com,DC=co', '*S1Adm1n99*' );
+	if ( !$bind ) {
+		echo 'Failed to connect to LDAP server!';
+		exit;
 	}
-} else {
+
+// ejemplo de autenticación
+// $ldaprdn  = 'CN=Administrator,CN=Users,DC=si18,DC=com,DC=co';     // ldap rdn or dn
+// $ldappass = '*S1Adm1n99*';  // associated password
+
+// conexión al servidor LDAP
+$ldapconn = ldap_connect("192.168.0.195")
+	or die("Could not connect to LDAP server.");
+
+	if ( !$bind ) {
+		echo 'Failed to connect to LDAP server!';
+		exit;
+	}
+
+	
+	
+	$dn = 'uid=1,dc=1234,DC=si18,DC=com,DC=co';
+	
+	$entry = array();
+	$entry['objectClass']     = array( 'top', 'person', 'organizationalPerson', 'inetOrgPerson', 'hCard' );
+	$entry['cn']              = array( 'César L. Rizo Zabaleta' ); // Common Name
+	$entry['sn']              = array( 'Rizo Zabaleta' ); // Surname/Family Name
+	$entry['gn']              = array( 'César' ); // Given Name
+	$entry['displayName']     = array( 'César L. Rizo Zabaleta' ); // Nickname
+
+	$r = ldap_add($ldapconn, "CN=César L. Rizo Zabaleta,OU=USUARIOS,OU=PROGRAMACION Y TI,OU=GERENCIA FINANCIERA,OU=SI18-CS,DC=si18,DC=com,DC=co", $entry);
+	
+	ldap_close($ldapconn);
+// 	} else {
+// 		echo "No se pudo conectar al servidor LDAP";
+// 	}
+	
+	ldap_close( $ldap );
+}
+
+
+// if ($ldapconn) {
+
+
+
+// 	// realizando la autenticación
+// 	$ldapbind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
+
+// 	// verificación del enlace
+// 	if ($ldapbind) {
+// 		 echo "LDAP bind successful...";
+// 	} else {
+// 		echo "LDAP bind failed...";
+// 	}
+// 	if ($ldapconn) {
+
+// 		$info["cn"] = "César L. Rizo Zabaleta";
+// 		$info["sn"] = "Rizo Zabaleta";
+// 		$info["objectclass"] = "person";
+	
+// 		// Agregar datos al directorio
+// 		$r = ldap_add($ldapconn, "CN=César L. Rizo Zabaleta,OU=USUARIOS,OU=PROGRAMACION Y TI,OU=GERENCIA FINANCIERA,OU=SI18-CS,DC=si18,DC=com,DC=co", $info);
+	
+// 		ldap_close($ldapconn);
+// 	} else {
+// 		echo "No se pudo conectar al servidor LDAP";
+// 	}
+// }
+
 ?>
 
-<?php } ?>
 
 
 <!DOCTYPE html>

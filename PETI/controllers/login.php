@@ -4,7 +4,6 @@ require_once 'libs/controller.php';
 
 class Login extends Controller
 {
-
     function __construct()
     {
         parent::__construct();
@@ -20,6 +19,7 @@ class Login extends Controller
     {
         print_r($_POST);
         $this->model->validar();
-        // $this->view->render('login/index');
+        $this->view->render('login/index');
     }
+
 }

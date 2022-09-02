@@ -2,7 +2,7 @@
 
 <div class="container">
 
-        <div class="heaven">
+        <div  class="heaven">
 
             <a href="<?php echo constant('URL') . 'index/riesgos' ?>">
                 <img src="<?php echo constant('URL') . 'public/images/Piezas/1.png' ?>" />
@@ -12,17 +12,18 @@
 
         </div>
 
-        <div class="heaven2">
+        <div style='text-align:center;' class="heaven2">
 
             <a href="<?php echo constant('URL') . 'index/objetivos' ?>">
-                <img src="<?php echo constant('URL') . 'public/images/Piezas/2.png' ?>" />
+                <img  transition: width 2s, height 2s, transform 2s; src="<?php echo constant('URL') . 'public/images/Piezas/2.png' ?>" />
                 <div class="texto2"> OBJETIVOS <br>
-                    <br>GENERAL ESPECÍFICOS
+                    <br>GENERAL 
+                    <br>ESPECÍFICOS
                 </div>
             </a>
         </div>
 
-        <div class="heaven3">
+        <div style='text-align:center;' class="heaven3">
 
             <a href="<?php echo constant('URL') . 'index/Mission_vision' ?>">
                 <img src="<?php echo constant('URL') . 'public/images/Piezas/3.png' ?>" />

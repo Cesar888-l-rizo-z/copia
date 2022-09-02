@@ -28,5 +28,22 @@ class LoginModel extends Model
             return [];
         }
     }
+
+    // public function ldap_connect()
+    // {
+
+    //     try {
+    //         $query = $this->db->connect()->prepare('SELECT * FROM loginpeti');
+    //         $query->execute([]);
+
+    //         $row = $query->fetchAll();
+
+    //         return $row;
+    //     } catch (PDOException $e) {
+    //         echo $e->getMessage();
+    //         // echo "Este documento ya esta registrado";
+    //         return [];
+    //     }
+    // }
     
 }

@@ -1,4 +1,4 @@
-body { min-height: 100vh; }
+body { min-height: 600px; }
 
 .parent {
   text-align: center;
@@ -69,7 +69,7 @@ a {
 .heaven3 {
   position: absolute;
 
-  max-width: 111%;
+  max-width: 600px;
   max-height: 111%;
   padding: 10px;
   margin: 10px;
@@ -596,3 +596,34 @@ button {
 	border: 1px solid #ffffff;	
 	
 }
+
+/* 
+.heaven {
+  padding-top: 57px;
+  margin-left: 299px;
+
+}
+
+.heaven {
+  transition: transform 0.2s;
+}
+
+.heaven:hover {
+  transform: scale(1.5);
+  z-index: 99999;
+}
+
+.heaven2 {
+  padding-top: 57px;
+  margin-left: 26px;
+  
+}
+
+.heaven2 {
+  transition: 0.2s;
+}
+
+.heaven2:hover {
+  transform: scale(1.5);
+  z-index: 99999;
+} */
