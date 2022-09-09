@@ -203,6 +203,11 @@ class Index extends Controller
         }
     }
 
+    function Registrarse()
+    {
+        $this->view->render('login/Registrarse');
+    }
+
     function riesgos()
     {
         $this->view->render('defaul/riesgos');

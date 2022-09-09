@@ -16,7 +16,7 @@ class LoginModel extends Model
     {
 
         try {
-            $query = $this->db->connect()->prepare('SELECT * FROM loginpeti');
+            $query = $this->db->connect()->prepare('SELECT * FROM login');
             $query->execute([]);
 
             $row = $query->fetchAll();
@@ -29,21 +29,42 @@ class LoginModel extends Model
         }
     }
 
-    // public function ldap_connect()
-    // {
+    public function create($data){
 
-    //     try {
-    //         $query = $this->db->connect()->prepare('SELECT * FROM loginpeti');
-    //         $query->execute([]);
+        try{
+            $query = $this->db->connect()->prepare('INSERT INTO users (IDUSERS, NAME, EMAIL, PASSWORD, CONFIRM_PASS, PROFILE_IDPROFILE, STATUS) VALUES (:idusers, :name, :idusers, :name, :email, :password, :confirm_pass, :profile, :status)');
+            $query->execute([
+                'user'           => $data['idusers'], 
+                'nombre'              => $data['name'], 
+                'correo'             => $data['email'], 
+                'pass'             => $data['password'], 
+                'passr'              => $data['confirm_pass'],   
+                'profile' => $data['profile'], 
+                'status'            => $data['status']
+            ]);
+            return true;
+        }catch(PDOException $e){
+            // echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
 
-    //         $row = $query->fetchAll();
+    public function createLogin($data){
 
-    //         return $row;
-    //     } catch (PDOException $e) {
-    //         echo $e->getMessage();
-    //         // echo "Este documento ya esta registrado";
-    //         return [];
-    //     }
-    // }
+        try{
+            $query = $this->db->connect()->prepare('INSERT INTO login (IDUSERSLG, PASSWORD) VALUES (:iduserslg, :password)');
+            $query->execute([
+
+                'iduserslg'     => $data['iduserslg'], 
+                'password'          => $data['password'], 
+            ]);
+            return true;
+        }catch(PDOException $e){
+            // echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return false;
+        }
+    }
     
 }

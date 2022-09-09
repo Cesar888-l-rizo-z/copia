@@ -19,7 +19,8 @@ class Login extends Controller
     {
         print_r($_POST);
         $this->model->validar();
-        $this->view->render('login/index');
+        //$this->view->render('login/index');
     }
+        
 
 }
