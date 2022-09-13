@@ -4,6 +4,10 @@ require_once 'libs/controller.php';
 
 class Index extends Controller
 {
+    function index()
+    {
+        $this->view->render('register/index');
+    }
 
     function __construct()
     {

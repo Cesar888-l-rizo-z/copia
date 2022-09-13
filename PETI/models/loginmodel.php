@@ -44,7 +44,7 @@ class LoginModel extends Model
             ]);
             return true;
         }catch(PDOException $e){
-            // echo $e->getMessage();
+             echo $e->getMessage();
             // echo "Este documento ya esta registrado";
             return false;
         }
@@ -64,6 +64,23 @@ class LoginModel extends Model
             // echo $e->getMessage();
             // echo "Este documento ya esta registrado";
             return false;
+        }
+    }
+
+    public function register()
+    {
+
+        try {
+            $query = $this->db->connect()->prepare('SELECT * FROM login');
+            $query->execute([]);
+
+            $row = $query->fetchAll();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            // echo "Este documento ya esta registrado";
+            return [];
         }
     }
     

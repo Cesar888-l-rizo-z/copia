@@ -60,7 +60,7 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>index/list_Ideal_situation">Lista_Situacion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>register/Registrarse">Nuevo_User</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo constant('URL'); ?>register/register">Nuevo_User</a>
                     </li>
                 </ul>
             </div>

@@ -11,24 +11,14 @@ class Register extends Controller
         $this->view->mensaje = "";
     }
 
-    function Registrarse()
+    function register()
     {
-        $this->view->render('login/Registrarse');
+        $this->view->render('register/register');
     }
 
     function render()
     {
-        // $company                    = $this->model->listCompany();
-        // $eps                        = $this->model->listEps();
-        // $enfermedades               = $this->model->listDiseases();
-        // $transporte                 = $this->model->listTransport();
-        // $casos                      = $this->model->listCases();
-        // $this->view->company        = $company;
-        // $this->view->eps            = $eps;
-        // $this->view->enfermedades   = $enfermedades;
-        // $this->view->transporte     = $transporte;
-        // $this->view->casos          = $casos;
-        $this->view->render('login/index');
+        $this->view->render('register/index');
     }
 
     function createUser()
