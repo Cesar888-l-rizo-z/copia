@@ -1,156 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
-    <title>Login - Sistema de Usuarios</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/bootstrap.min.css?v=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/style.css?v=<?php echo time(); ?>" />
 
-    <meta name="description" content="User login page" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/fonts.googleapis.com.css" />
-    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/ace.min.css" />
-    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/styles/ace-rtl.min.css" />
-
+    <!-- JS -->
+    <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/jquery-3.5.1.min.js?v=<?php echo time(); ?>"></script>
+    <script type="text/javascript" src="<?php echo constant('URL'); ?>public/js/bootstrap.min.js?v=<?php echo time(); ?>"></script>
+    <title>Bootstrap</title>
 </head>
+<body>
+<?php
 
-<body class="login-layout">
-    <div class="main-container">
-        <div class="main-content">
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1">
-                    <div class="login-container">
-                        <div class="center">
-                            <h1>
-                                <i class="ace-icon fa fa-leaf green"></i>
-                                <span class="red">Inicia sesión con tu cuenta </span>
-                            </h1>
-                        </div>
+$mensaje = '';
+$mensaje_1 = '';
+$mensaje_2 = '';
 
-                        <div class="space-6"></div>
+?>
 
-                        <div class="position-relative">
-                            <div id="login-box" class="login-box visible widget-box no-border">
-                                <div class="widget-body">
-                                    <div class="widget-main">
-                                        <h4 class="header blue lighter bigger">
-                                            <i class="ace-icon fa fa-coffee green"></i>
-                                            Ingresa tu Informacion
-                                        </h4>
-
-                                        <div class="space-6"></div>
-
-                                        <form action="<?php echo constant('URL') ?>login" method="POST">
-                                            <fieldset>
-                                                <label class="block clearfix" for="username">
-                                                    <span class="block input-icon input-icon-right">
-                                                        <input id="user" type="text" name="user" placeholder="Usuario" class="form-control" />
-                                                        <i class="ace-icon fa fa-user"></i>
-                                                    </span>
-                                                </label>
-
-                                                <label class="block clearfix" for="password">
-                                                    <span class="block input-icon input-icon-right">
-                                                        <input id="password" type="password" nam" class="form-control" placeholder="Contraseña" />
-                                                        <i class="ace-icon fa fa-lock"></i>
-                                                    </span>
-                                                </label>
-
-                                                <div class="space"></div>
-
-                                                <div class="clearfix">
-                                                    <label class="inline">
-                                                        <input type="checkbox" class="ace" />
-                                                        <span class="lbl"> Recordarme</span>
-                                                    </label>
-
-                                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                                                        <i class="ace-icon fa fa-key"></i>
-                                                        <span class="bigger-110">Ingresar</span>
-                                                    </button>
-
-                                                    <div class="row">
-                                                        <spam>No estas registrado? <a href="<?php echo constant('URL'); ?>register">Registrarse</a></spam>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="space-4"></div>
-                                            </fieldset>
-                                        </form>
-                                    </div><!-- /.widget-main -->
-
-                                    <div class="navbar-fixed-top align-right">
-                                        <br />
-                                        &nbsp;
-                                        <a id="btn-login-dark" href="#">Oscuro</a>
-                                        &nbsp;
-                                        <span class="blue">/</span>
-                                        &nbsp;
-                                        <a id="btn-login-blur" href="#">Azul</a>
-                                        &nbsp;
-                                        <span class="blue">/</span>
-                                        &nbsp;
-                                        <a id="btn-login-light" href="#">Claro</a>
-                                        &nbsp; &nbsp; &nbsp;
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <script src="<?php echo constant('URL'); ?>public/js/jquery-2.1.4.min.js"></script>
-
-                <script type="text/javascript">
-                    if ('ontouchstart' in document.documentElement) document.write("<script src='<?php echo constant('URL'); ?>public/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-                </script>
-
-                <script type="text/javascript">
-                    jQuery(function($) {
-                        $(document).on('click', '.toolbar a[data-target]', function(e) {
-                            e.preventDefault();
-                            var target = $(this).data('target');
-                            $('.widget-box.visible').removeClass('visible'); //hide others
-                            $(target).addClass('visible'); //show target
-                        });
-                    });
-
-
-
-                    //no necesitas esto, solo se usa para cambiar el fondo
-                    jQuery(function($) {
-                        $('#btn-login-dark').on('click', function(e) {
-                            $('body').attr('class', 'login-layout');
-                            $('#id-text2').attr('class', 'white');
-                            $('#id-company-text').attr('class', 'blue');
-
-                            e.preventDefault();
-                        });
-                        $('#btn-login-light').on('click', function(e) {
-                            $('body').attr('class', 'login-layout light-login');
-                            $('#id-text2').attr('class', 'grey');
-                            $('#id-company-text').attr('class', 'blue');
-
-                            e.preventDefault();
-                        });
-                        $('#btn-login-blur').on('click', function(e) {
-                            $('body').attr('class', 'login-layout blur-login');
-                            $('#id-text2').attr('class', 'white');
-                            $('#id-company-text').attr('class', 'light-blue');
-
-                            e.preventDefault();
-                        });
-
-                    });
-                </script>
-            </div>
+<br>
+    <div class="container">
+        <div class="row centrado mt-5">
+           <h1 class="align-middle">Ingreso</h1> 
         </div>
+        <div class="row justify-content-center">
+                <?php
+                    if ($this->mensaje != "") 
+                        echo $this->mensaje;
+                ?>
+                       
+            <form class="col-5" action="<?php echo constant('URL'); ?>register/createUser">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" name="user" id="idusers" aria-describedby="emailHelp">
+                    <div id="emailiduser" class="form-text">Ingrese su número de identificación.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Verificación</label>
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn btn-primary aling-middle">Enviar</button>       
+                </div>
+                <div class="row centrado mt-3">
+                    <spam>No estas registrado? <a href="<?php echo constant('URL'); ?>register">Registrarse</a></spam>
+                </div>
+            </form>
+        </div>
+        
+        
     </div>
 </body>
-
 </html>
+

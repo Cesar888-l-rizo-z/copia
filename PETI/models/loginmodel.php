@@ -12,20 +12,61 @@ class LoginModel extends Model
         parent::__construct();
     }
 
-    public function validar()
-    {
+    public function login($data){
+        $item = new Users();
 
-        try {
-            $query = $this->db->connect()->prepare('SELECT * FROM login');
-            $query->execute([]);
+        try{
+            $query = $this->db->connect()->prepare('
+            SELECT
+                login.users_idusers,
+                login.password,
+                users.name,
+                users.profile,
+                users.last_report,
+                users.godfather_code,
+                users.conditions,
+                users.company,
+                users.weight,
+                users.height,
+                users.status,
+                users.updateInfo,
+                users.surveyApplication,
+                vaccination.apply_date,
+                MAX(vaccination.dose)
+            FROM
+                login
+            INNER JOIN users ON login.users_idusers = users.idusers
+            LEFT JOIN vaccination ON vaccination.users_idusers = users.idusers
+            WHERE
+                login.users_idusers = :user
+            ');
+            $query->execute([
+                'user' => $data['user']
+            ]);
 
-            $row = $query->fetchAll();
+            while ($row = $query->fetch()) {
+                $item->user                 = $row['users_idusers'];
+                $item->profile              = $row['profile'];
+                $item->name                 = $row['name'];
+                $item->last_report          = $row['last_report'];
+                $item->password             = $row['password'];
+                $item->code                 = $row['godfather_code'];
+                $item->company              = $row['company'];
+                $item->conditions           = $row['conditions'];
+                $item->weight               = $row['weight'];
+                $item->height               = $row['height'];
+                $item->status               = $row['status'];
+                $item->updateInfo           = $row['updateInfo'];
+                $item->surveyApplication    = $row['surveyApplication'];
+                $item->applyDate            = $row['apply_date'];
+                $item->vaccinationStatus    = $row['MAX(vaccination.dose)'];
+            }
 
-            return $row;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+            return $item;
+        }catch(PDOException $e){
+            // echo $e->getMessage();
             // echo "Este documento ya esta registrado";
-            return [];
+            return null;
         }
     }
 

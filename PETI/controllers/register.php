@@ -11,11 +11,6 @@ class Register extends Controller
         $this->view->mensaje = "";
     }
 
-    function register()
-    {
-        $this->view->render('register/register');
-    }
-
     function render()
     {
         $this->view->render('register/index');
@@ -24,11 +19,13 @@ class Register extends Controller
     function createUser()
     {
 
-        $idusers            = $_POST['user'];
-        $name               = strtoupper($_POST['nombre']);
-        $email              = strtolower($_POST['correo']);
-        $password           = $_POST['pass'];
-        $confirm_pass       = $_POST['passr'];
+        $idusers            = $_POST['idusers'];
+        $name               = strtoupper($_POST['name']);
+        $surname            = strtoupper($_POST['surname']);
+        $phone              = strtoupper($_POST['phone']);
+        $email              = strtoupper($_POST['email']);
+        $password           = $_POST['password'];                           
+        $confirm_pass       = $_POST['passwordv'];                           
 
         $profile            = "2";
         $status             = "1";
@@ -41,20 +38,19 @@ class Register extends Controller
             if ($password == $confirm_pass) {
                 $passenc            = password_hash($password, PASSWORD_DEFAULT);
                 if ($this->model->create([
-                    'user'           => $idusers,
-                    'nombre'              => $name,
-                    'correo'           => $email,
-                    'pass'             => $password,
-                    'passr'             => $confirm_pass,
+                    'idusers'           => $idusers,
+                    'name'              => $name,
+                    'surname'           => $surname,
+                    'phone'             => $phone,
+                    'email'             => $email,
+                    'password'          => $password,
+                    'status'            => $status,
                     'profile'           => $profile,
-                    'status'            => $status
-                    
                 ])) {
                     $this->model->createLogin([
-                        'users_idusers'     => $idusers,
+                        'user_iduser'     => $idusers,
                         'password'          => $passenc,
                     ]);
-
 
                     $mensaje = '<div class="alert alert-primary" role="alert">
                     Usuario creado con exito
