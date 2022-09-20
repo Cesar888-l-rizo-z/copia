@@ -16,8 +16,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row centrado mt-5">
-           <h1 class="align-middle">Nuevo Registro</h1> 
+        <div class="text-justify">
+           <h1 class="text-center">Nuevo Registro</h1> 
         </div>
         <div class="row justify-content-center m-5">
             <form class="col-5" action="<?php echo constant('URL'); ?>register/createUser" method="POST">

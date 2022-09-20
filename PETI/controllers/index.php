@@ -12,6 +12,7 @@ class Index extends Controller
     function __construct()
     {
         parent::__construct();
+        error_log('Index::construct -> inicio del index');
         $this->view->mensaje = "";
     }
 

@@ -25,7 +25,7 @@ $mensaje_2 = '';
 
 <br>
     <div class="container">
-        <div class="row centrado mt-5">
+        <div class="mx-auto" style="width: 200px;">
            <h1 class="align-middle">Ingreso</h1> 
         </div>
         <div class="row justify-content-center">
@@ -34,19 +34,15 @@ $mensaje_2 = '';
                         echo $this->mensaje;
                 ?>
                        
-            <form class="col-5" action="<?php echo constant('URL'); ?>register/createUser">
+            <form class="col-5" action="<?php echo constant('URL'); ?>login/loginUser" method="POST">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" name="user" id="idusers" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" name="user" id="user" aria-describedby="emailHelp">
                     <div id="emailiduser" class="form-text">Ingrese su número de identificación.</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Verificación</label>
+                    <input type="password" class="form-control" name="password" id="password">
                 </div>
                 <div class="center">
                     <button type="submit" class="btn btn-primary aling-middle">Enviar</button>       

@@ -36,60 +36,32 @@ class Login extends Controller
         $session = $this->model->login([
             'user' => $user,
         ]);
-        if ($session->user != "") {
+        
+        if ($session->idusers != "") {
 
             $password = $session->password;
 
             if (password_verify($pass, $password)) {
-                if ($session->status != 2) {
                     session_start();
-                    $_SESSION['user']               = $session->user;
+                    $_SESSION['idusers']               = $session->idusers;
                     $_SESSION['profile']            = $session->profile;
                     $_SESSION['name']               = $session->name;
-    
+
                     // print_r($_SESSION);
-                    if (((($_SESSION['profile'] == 1) || ($_SESSION['profile'] == 2)) || ($_SESSION['profile'] == 3)) || ($_SESSION['profile'] == 4)) {
+                    if (((($_SESSION['profile'] == 1) || ($_SESSION['profile'] == 2)) || ($_SESSION['profile'] == 3)) || ($_SESSION['profile'] == 4)) 
+                    {
                         $user = $_SESSION["user"];
                         setlocale(LC_TIME, "es_CO.UTF-8");
                         date_default_timezone_set('America/Bogota');
                         $time = date('Y-m-d');
 
-                        if (($_SESSION['profile'] == 1) || ($_SESSION['profile'] == 4)) {
-                            $log = new Log("log",  './public/documents/logs/');
-                            $log->insert('Inicio de sesion de usuario administrador', false, false, false);
-                        }
-
-                        $number_register = $this->model->countRegister([
-                            'user'        => $user,
-                            'date_report' => $time
-                        ]);
-                        $this->view->number_register = $number_register;
                         $this->view->mensaje = "";
-                        $this->view->labs = $this->model->listLabs();
-                        if ($_SESSION['conditions'] == "1" && ($_SESSION['weight'] != "" || $_SESSION['height'] != "")) {
-                            $this->view->render('main/index');
-                        } elseif ($_SESSION['weight'] == "" || $_SESSION['height'] == "") {
-                            $this->view->render('main/upgrade');
-                        } else {
-                            $this->view->render('main/conditions');
-                        }
-                    } elseif ($_SESSION['profile'] == 5) {
-                        if (!isset($_SESSION)) {
-                            session_start();
-                        }
-                        $user_report    = $_SESSION['user'];
-                        $act = $this->model->listMyAct($user_report);
-                        $this->view->act = $act;
-                        $this->view->render('act/my_reports');
+                        $this->view->render('peti/index');
+                        
                     } else {
-                        $this->view->render('login/index');
+                        $this->view->render('peti/index');
                     }
                 } else {
-                    $mensaje = 'Su usuario se encuentra desactivado';
-                    $this->view->mensaje = $mensaje;
-                    $this->view->render('login/index');
-                }
-            } else {
                 $mensaje_1 = '';
                 $mensaje_2 = 'Contraseña incorrecta';
                 $this->view->mensaje_1 = $mensaje_1;
